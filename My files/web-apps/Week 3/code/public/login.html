@@ -22,28 +22,47 @@
 
     <script type="text/javascript">
 	// Use fetch to call the  API
-	function callApi() {
-		let url="/api/login"
 
+    function callApi() {
+		let url="/api/login"
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify(data)
+    }
 		return fetch(url).then(response => response.json());
 	}
+
+
   callApi();
 
     let form = document.getElementById("loginForm");
     let usernameInput = document.getElementById("username");
 	let passwordInput = document.getElementById("password");
     
-    // Add submit event listener
+    // Add submit event listener. TODO: Stop the submit button sending the form
 	form.addEventListener("submit", (event) => {
 		event.preventDefault();
+
+        // TODO: Capture the input values using FormData
 
         let data = new FormData(form);
 		let username = data.get("username");
         let password = data.get("password");
+
+       /* if(username == "Adam" && password == "hello"){
+            alert("Well done");
+        }else {
+            alert("Wrong!");
+        }
+        */
+        
+
     });
+
+ 
         /*
-            TODO: Stop the submit button sending the form
-            TODO: Capture the input values using FormData
             TODO: Send the data to the login API /api/login
             TODO: Check the login is correct agains some hard-coded values, e.g. username="test@test.com", password="password"
          */
