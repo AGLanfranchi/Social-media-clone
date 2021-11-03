@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Web Apps - Web Theory</title>
+        <meta charset="utf-8">
+        <style>
+            @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+            @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+            @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+        </style>
+
+        <link rel="stylesheet" media="screen" href="css/base.css">
+        <link rel="stylesheet" media="screen" href="css/styles.css">
+        <link rel="stylesheet" media="print" href="css/print.css">
+        <link href="node_modules/nord-highlightjs/dist/nord.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <textarea id="source" style="display:none"></textarea>
+        <script src="js/remark-latest.min.js"></script>
+        <script src="js/jquery-3.4.1.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $('#source').load('content.md', function() {
+                    var slideshow = remark.create({
+                        highlightStyle: 'nord'
+                    });
+                }).show();
+             });
+        </script>
+    </body>
+</html>

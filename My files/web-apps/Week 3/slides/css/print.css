@@ -1,0 +1,13 @@
+svg {
+    display: block;
+    margin: 0 auto;
+}
+
+.remark-slide-scaler {
+    width: 29cm !important;
+    height: 21cm !important;
+}
+
+.remark-slide-content {
+    padding: 8em 4em;
+}
