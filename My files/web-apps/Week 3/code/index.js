@@ -9,13 +9,44 @@ const funcs = require('./src/funcs.js')
 // See: http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'))
 
+app.use(express.json())
+
 // Our API routes will be here
-app.get('/api/login', function (req, res) {
+app.post('/api/login', function (req, res) {
+  loggedIn: true;
+  loggedIn: false;
   // Return the response by calling our function
-  res.send({});
+  res.send({
+    
+  });
   //res.send(funcs.myFunction());
 })
 
 // Tell us where we're running from
 console.log("Server running on http://localhost:" + port)
 app.listen(port)
+
+/* if(username == "Adam" && password == "hello"){
+            alert("Well done");
+        }else {
+            alert("Wrong!");
+        }
+        */
+
+// res.send({ loggedIn: true })
+// res.send({ loggedIn: false })
+// req.body.username
+// req.body.password
+
+/* 
+
+let loggedIn = false;
+if (req.body.username == 'bob' && req.body.password == 'password') {
+    loggedIn = true;
+}
+
+res.send({
+    loggedIn: loggedIn
+})
+
+*/

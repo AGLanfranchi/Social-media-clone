@@ -23,23 +23,25 @@
     <script type="text/javascript">
 	// Use fetch to call the  API
 
-    function callApi() {
+    function callApi(data) {
 		let url="/api/login"
-        method: "POST",
-        headers: {
-            "Content-Type" : "application/json"
-        },
-        body: JSON.stringify(data)
-    }
-		return fetch(url).then(response => response.json());
+        let options ={
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(data)
+        }
+    
+		return fetch(url, options).then(response => response.json());
 	}
 
 
-  callApi();
+  // callApi();
 
     let form = document.getElementById("loginForm");
-    let usernameInput = document.getElementById("username");
-	let passwordInput = document.getElementById("password");
+    // let usernameInput = document.getElementById("username");
+	// let passwordInput = document.getElementById("password");
     
     // Add submit event listener. TODO: Stop the submit button sending the form
 	form.addEventListener("submit", (event) => {
@@ -58,6 +60,7 @@
         }
         */
         
+        callApi({"username": username, "password": password})
 
     });
 
