@@ -2,15 +2,27 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+const Database = require('./src/database.js')
+Database.connect().then(Database.connect().then(db =>{
+  console.log(db)
+
+  db.get('SELECT * FROM users').then(result =>{
+    console.log(result)
+  })
+}))
+
+
+// const Users = require('./src/users.js')
+
 // You can require your own code as well...
 const funcs = require('./src/funcs.js')
 
 // Tell Express to server HTML, JS, CSS etc from the public/ folder
 // See: http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'))
-
 app.use(express.json())
 
+/
 // Our API routes will be here
 app.post('/api/login', function (req, res) {
   let loggedIn = false;
@@ -21,14 +33,14 @@ app.post('/api/login', function (req, res) {
   if (req.body.username == 'Adam' && req.body.password == 'password') {
     loggedIn = true;
     console.log("Well done");
-
+  
   // Return the response by calling our function  
   }
 
   res.send({
     loggedIn: loggedIn
  });
- 
+
 })
 
 // Tell us where we're running from
