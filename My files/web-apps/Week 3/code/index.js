@@ -7,7 +7,6 @@ const funcs = require('./src/funcs.js')
 
 // Users.test()
 
-
 // Tell Express to server HTML, JS, CSS etc from the public/ folder
 // See: http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'))
@@ -16,23 +15,29 @@ app.use(express.json())
 /
 // Our API routes will be here
 app.post('/api/login', function (req, res) {
-  let loggedIn = false;
+  Users.login(req.body.username, req.body.password, result => {
 
-  req.body.username
-  req.body.password
+    if (!result) {
+      result = false
+    }
 
-  // if (req.body.username == 'Adam' && req.body.password == 'password') {
+    res.json(result)
+  })
+})
+    // let loggedIn = false;
+    // req.body.username
+    // req.body.password
+    // if (req.body.username == 'Adam' && req.body.password == 'password') {
     // loggedIn = true;
     // console.log("Well done");
-  
-  // Return the response by calling our function  
-  // }
+    // Return the response by calling our function  
+    // }
 
-  res.send({
-    loggedIn: loggedIn
- })
+    // res.send({
+    // loggedIn: loggedIn
+    //  })
 
-})
+    // })
 
 // Tell us where we're running from
 console.log("Server running on http://localhost:" + port)

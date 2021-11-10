@@ -1,5 +1,5 @@
+const Database = require('./database.js')
 const UUID = require('uuid')
-const Database = require('./src/database.js')
 
 
 
@@ -16,7 +16,7 @@ module.exports = {
     },
     
     login(username, password, callback) {
-        DB.connect().then(db => {
+        Database.connect().then(db => {
             
             
             
@@ -33,7 +33,7 @@ module.exports = {
     },
 
     findByToken(token) {
-        DB.connect().then(db => {
+        Database.connect().then(db => {
             db.get('SELECT * FROM users WHERE token = ?', token).then(result => {
                 callback(result)
             })

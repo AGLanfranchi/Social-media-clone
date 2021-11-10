@@ -14,7 +14,7 @@ module.exports = {
             driver: Sqlite3.Database
         })
         .catch(err => {
-            console.log('DB.connect failed with error:' + err)
+            console.log('Database.connect failed with error:' + err)
         })
     }
 
