@@ -2,20 +2,11 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-const Database = require('./src/database.js')
-Database.connect().then(Database.connect().then(db =>{
-  console.log(db)
-
-  db.get('SELECT * FROM users').then(result =>{
-    console.log(result)
-  })
-}))
-
-
-// const Users = require('./src/users.js')
-
-// You can require your own code as well...
+const Users = require('./src/users.js')
 const funcs = require('./src/funcs.js')
+
+// Users.test()
+
 
 // Tell Express to server HTML, JS, CSS etc from the public/ folder
 // See: http://expressjs.com/en/starter/static-files.html
@@ -30,16 +21,16 @@ app.post('/api/login', function (req, res) {
   req.body.username
   req.body.password
 
-  if (req.body.username == 'Adam' && req.body.password == 'password') {
-    loggedIn = true;
-    console.log("Well done");
+  // if (req.body.username == 'Adam' && req.body.password == 'password') {
+    // loggedIn = true;
+    // console.log("Well done");
   
   // Return the response by calling our function  
-  }
+  // }
 
   res.send({
     loggedIn: loggedIn
- });
+ })
 
 })
 

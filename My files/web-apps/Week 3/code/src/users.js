@@ -1,15 +1,27 @@
 const UUID = require('uuid')
+const Database = require('./src/database.js')
+
+
 
 module.exports = {
+
+    test(){
+        Database.connect().then(Database.connect().then(db =>{
+            console.log(db)
+          
+            db.get('SELECT * FROM users').then(result =>{
+              console.log(result)
+            })
+          }))
+    },
     
     login(username, password, callback) {
         DB.connect().then(db => {
-            // UNSAFE! Open to SQL injection attacks
-            // See: https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html#primary-defenses
-            db.get('SELECT * FROM users WHERE username = "' + username + '" AND password = "' + password + '"').then(result => {
-            // SAFE
-            // db.get('SELECT * FROM users WHERE username = ? AND password = ?', username, password).then(result => {
-                if (result && !result.token) {
+            
+            
+            
+            db.get('SELECT * FROM users WHERE username = ? AND password = ?', username, password).then(result => {
+                if (result) {
                     
                     callback(result)
                 }
