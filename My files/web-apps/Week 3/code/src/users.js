@@ -21,10 +21,10 @@ module.exports = {
             
             
             db.get('SELECT * FROM users WHERE username = ? AND password = ?', username, password).then(result => {
-                if (result) {
+                // if (result) {
                     
                     callback(result)
-                }
+                // }
             })
             .catch(err => {
                 console.log('users.login failed with error:' + err)
