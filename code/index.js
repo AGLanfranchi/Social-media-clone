@@ -5,7 +5,6 @@ const port = 3000
 const Users = require('./src/users.js')
 const funcs = require('./src/funcs.js')
 
-// Users.test()
 
 // Tell Express to server HTML, JS, CSS etc from the public/ folder
 // See: http://expressjs.com/en/starter/static-files.html
@@ -24,6 +23,7 @@ app.post('/api/login', function (req, res) {
     res.json(result)
   })
 })
+
     // let loggedIn = false;
     // req.body.username
     // req.body.password
