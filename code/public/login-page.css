@@ -44,7 +44,7 @@ html {
     opacity: 0;
   }
   
-  #message-second-line {
+  #messageSecondLine {
     display: block;
   }
   
@@ -55,11 +55,11 @@ html {
     align-items: center;
   }
   
-  .login-form-field::placeholder {
+  .loginFormField::placeholder {
     color: #3a3a3a;
   }
   
-  .login-form {
+  .loginFormField {
     border: none;
     border-bottom: 1px solid #3a3a3a;
     margin-bottom: 10px;
@@ -68,7 +68,7 @@ html {
     padding: 0px 0px 5px 5px;
   }
   
-  #login-form-submit {
+  #loginFormSubmit {
     width: 100%;
     padding: 7px;
     border: none;

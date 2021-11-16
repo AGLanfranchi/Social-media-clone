@@ -4,6 +4,7 @@ const port = 3000
 
 const Users = require('./src/users.js')
 const funcs = require('./src/funcs.js')
+const { request } = require('express')
 
 
 // Tell Express to server HTML, JS, CSS etc from the public/ folder
@@ -14,6 +15,11 @@ app.use(express.json())
 /
 // Our API routes will be here
 app.post('/api/login', function (req, res) {
+
+  let loggedIn = false;
+  let username = req.body.username;
+  let password = req.body.password;
+  
   Users.login(req.body.username, req.body.password, result => {
 
     if (!result) {

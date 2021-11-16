@@ -13,13 +13,13 @@
          <a href="/index.html">Home</a>
 
         <div id="loginErrorMessage">
-              <p id="errorMessage">Invalid username <span id ="message-second-line"> and/or password</span></p>
+              <p id="errorMessage">Invalid username <span id ="messageSecondLine"> and/or password</span></p>
              </div>
     
              <form id="loginForm" name="loginForm">
-                 <input id="username" type="text" name="username" class="login-form-field" placeholder="Username">
-                 <input id="password" type="text" name="password" class="login-form-field" placeholder="Password">
-                 <input id="login-form-submit" type="submit" value="Login"/>
+                 <input id="username" type="text" name="username" class="loginFormField" placeholder="Username" required>
+                 <input id="password" type="text" name="password" class="loginFormField" placeholder="Password" required>
+                 <input id="loginFormSubmit" type="submit" value="Login"/>
             </form>
 
          <script type="text/javascript">
@@ -39,48 +39,33 @@
 	        }
 
 
-            let form = document.getElementById("loginForm");
-            let usernameInput = document.getElementById("username");
-	        let passwordInput = document.getElementById("password");
-            let loginButton = document.getElementById("login-form-submit");
-            let loginErrorMessage = document.getElementById("loginErrorMessage");
-    
-         // Add submit event listener.
-	        form.addEventListener("submit", (event) => { // changed from submit
-	        	event.preventDefault();
-
-                    // Capture the input values using FormData
-
-                    let username = form.username.value;
-                    let password  = form.password.value;
-
-                    if (username === "admin@example.com" && password === "password") {
-                        alert("You have successfuly loggin in.");
-                        } else {
-                        loginErrorMessage.style.opacity = 1;
-                     }
+                    let formInput = document.getElementById("loginForm");
+                    let loginButton = document.getElementById("login-form-submit");
+                    let loginErrorMsg = document.getElementById("loginErrorMessage");
                     
-                        
+    
+                    // Add submit event listener.
+	                formInput.addEventListener("submit", (event) => { 
+	        	         event.preventDefault();
 
-                    /*
-                    let data = new FormData(form);
-		            let username = data.get("username");
-                    let password = data.get("password");
-                    */
+                         // Capture the input values using FormData
+
+                        let data = new FormData(formInput);
+		                let username = data.get("username");
+                        let password = data.get("password");
+
+                        // I know this code is validating aginast what is below but I can't work out how to check 
+                        // against the database.
+                        /*
+                        if (username === "admin@example.com" && password === "password" ) {
+                            alert("You have successfully logged in");
+                        } else {
+                            alert("Incorrect");
+                        }
+                        */
         
-                    callApi({"username": username, "password": password}).then(response =>{console.log(response)})
+                         callApi({"username": username, "password": password}).then(response =>{console.log(response)})
 
-
-                     /*
-                        if (loggedIn) {
-                        text = 'Logged In as ' + sessionStorage.getItem('username')
-                         document.getElementById('logoutLink').classList.remove('hidden')
-                         }
-                            else {
-                            text = 'Logged Out'
-                            document.getElementById('loginLink').classList.remove('hidden')
-                            }
-                    */
          });
 
         </script>
