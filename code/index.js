@@ -15,11 +15,6 @@ app.use(express.json())
 /
 // Our API routes will be here
 app.post('/api/login', function (req, res) {
-
-  let loggedIn = false;
-  let username = req.body.username;
-  let password = req.body.password;
-  
   Users.login(req.body.username, req.body.password, result => {
 
     if (!result) {
@@ -30,20 +25,6 @@ app.post('/api/login', function (req, res) {
   })
 })
 
-    // let loggedIn = false;
-    // req.body.username
-    // req.body.password
-    // if (req.body.username == 'Adam' && req.body.password == 'password') {
-    // loggedIn = true;
-    // console.log("Well done");
-    // Return the response by calling our function  
-    // }
-
-    // res.send({
-    // loggedIn: loggedIn
-    //  })
-
-    // })
 
 // Tell us where we're running from
 console.log("Server running on http://localhost:" + port)
