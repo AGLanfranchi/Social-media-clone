@@ -24,6 +24,8 @@
             </form>
 
          <script type="text/javascript">
+
+
 	        // Use fetch to call the  API
 
             function callApi(data) {
@@ -41,8 +43,6 @@
 
 
                     let formInput = document.getElementById("loginForm");
-                    let loginButton = document.getElementById("login-form-submit");
-                    
     
                     // Add submit event listener.
 	                formInput.addEventListener("submit", (event) => { 
@@ -56,6 +56,8 @@
                                 
                          callApi({"username": username, "password": password})
                          .then(response => {
+
+                            // Hides or removes the HTML error message depedning on login 
 
                             let loginErrorMsg = document.getElementById("loginErrorMessage");
 

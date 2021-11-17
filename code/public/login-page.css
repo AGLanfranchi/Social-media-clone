@@ -47,6 +47,10 @@ html {
     display: block;
   }
   
+  .hidden {
+    display: none !important;
+  }
+
   #loginForm {
     align-self: flex-start;
     display: grid;
@@ -77,8 +81,4 @@ html {
     background-color: #3a3a3a;
     cursor: pointer;
     outline: none;
-  }
-
-  .hidden {
-    display: none !important;
   }

@@ -8,7 +8,6 @@ const { request } = require('express')
 
 
 // Tell Express to server HTML, JS, CSS etc from the public/ folder
-// See: http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'))
 app.use(express.json())
 
@@ -29,33 +28,3 @@ app.post('/api/login', function (req, res) {
 // Tell us where we're running from
 console.log("Server running on http://localhost:" + port)
 app.listen(port)
-
-
-
-
-
-
-/* if(username == "Adam" && password == "hello"){
-            alert("Well done");
-        }else {
-            alert("Wrong!");
-        }
-        */
-
-// res.send({ loggedIn: true })
-// res.send({ loggedIn: false })
-// req.body.username
-// req.body.password
-
-/* 
-
-let loggedIn = false;
-if (req.body.username == 'bob' && req.body.password == 'password') {
-    loggedIn = true;
-}
-
-res.send({
-    loggedIn: loggedIn
-})
-
-*/
