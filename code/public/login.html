@@ -12,9 +12,10 @@
         <h1>Login</h1>
          <a href="/index.html">Home</a>
 
-        <div id="loginErrorMessage">
-              <p id="errorMessage">Invalid username <span id ="messageSecondLine"> and/or password</span></p>
+        <div id="loginErrorMessage" class="hidden">
+              <p id="errorMessage">Invalid username <span id ="messageSecondLine"> and/or password.</span></p>
              </div>
+
     
              <form id="loginForm" name="loginForm">
                  <input id="username" type="text" name="username" class="loginFormField" placeholder="Username" required>
@@ -41,7 +42,6 @@
 
                     let formInput = document.getElementById("loginForm");
                     let loginButton = document.getElementById("login-form-submit");
-                    let loginErrorMsg = document.getElementById("loginErrorMessage");
                     
     
                     // Add submit event listener.
@@ -50,16 +50,19 @@
 
                          // Capture the input values using FormData
 
-                        let data = new FormData(formInput);
-		                let username = data.get("username");
-                        let password = data.get("password");
+                            let data = new FormData(formInput);
+		                    let username = data.get("username");
+                            let password = data.get("password");
                                 
                          callApi({"username": username, "password": password})
-                         .then(response =>{
-                             if(response) {
-                                alert("Well done")
+                         .then(response => {
+
+                            let loginErrorMsg = document.getElementById("loginErrorMessage");
+
+                             if(!response) {
+                                loginErrorMsg.classList.remove('hidden');
                              } else {
-                                alert("Invalid credentials");
+                                loginErrorMsg.classList.add('hidden');
                              }
                              
                          })

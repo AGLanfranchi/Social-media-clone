@@ -41,9 +41,8 @@ html {
     color: #8a0000;
     border: 1px solid #8a0000;
     background-color: #e58f8f;
-    opacity: 0;
   }
-  
+ 
   #messageSecondLine {
     display: block;
   }
@@ -78,4 +77,8 @@ html {
     background-color: #3a3a3a;
     cursor: pointer;
     outline: none;
+  }
+
+  .hidden {
+    display: none !important;
   }
