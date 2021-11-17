@@ -4,7 +4,7 @@ const UUID = require('uuid')
 
 
 module.exports = {
-
+/*
     test(){
         Database.connect().then(Database.connect().then(db =>{
             console.log(db)
@@ -14,6 +14,8 @@ module.exports = {
             })
           }))
     },
+
+    */
     
     login(username, password, callback) {
         Database.connect().then(db => {
