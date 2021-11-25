@@ -69,8 +69,33 @@ html {
     border-radius: 3px;
     outline: none;
     padding: 0px 0px 5px 5px;
+    margin-top: 10px;
   }
-  
+
+  #showPassordButton{
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    background-color: #1c95c5;
+    cursor: pointer;
+    outline: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  #showPassordButton:hover{
+    background-color: #276c88
+  }
+
+  #showPassordButton:active{
+    background-color: #276c88;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
   #loginFormSubmit {
     width: 100%;
     padding: 7px;
@@ -78,7 +103,17 @@ html {
     border-radius: 5px;
     color: white;
     font-weight: bold;
-    background-color: #3a3a3a;
+    background-color: #1c95c5;
     cursor: pointer;
     outline: none;
+  }
+
+  #loginFormSubmit:hover{
+    background-color: #276c88
+  }
+
+  #loginFormSubmit:active{
+    background-color: #276c88;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
   }
