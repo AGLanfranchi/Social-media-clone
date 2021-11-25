@@ -37,6 +37,7 @@ html {
     border-radius: 3px;
     outline: none;
     padding: 0px 0px 5px 5px;
+    width: 200px;
   }
 
   .postsBodyField {
@@ -46,6 +47,8 @@ html {
     border-radius: 3px;
     outline: none;
     padding: 0px 0px 5px 5px;
+    width: 200px;
+    height: 50px;
   }
 
   #postsFormSubmit {
@@ -55,7 +58,18 @@ html {
     border-radius: 5px;
     color: white;
     font-weight: bold;
-    background-color: #3a3a3a;
+    background-color: #1c95c5;
     cursor: pointer;
     outline: none;
+    width: 100px;
+  }
+
+  #postsFormSubmit:hover{
+    background-color: #276c88
+  }
+
+  #postsFormSubmit:active{
+    background-color: #276c88;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
   }
