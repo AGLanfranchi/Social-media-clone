@@ -13,7 +13,7 @@ function callApi(data) {
     return fetch(url, options).then(response => response.json());
 }
 
-let formInput = document.getElementById("loginForm");
+    let formInput = document.getElementById("loginForm");
     
                     // Add submit event listener.
 	                formInput.addEventListener("submit", (event) => { 
@@ -45,4 +45,13 @@ let formInput = document.getElementById("loginForm");
 
          });
 
-         
+         // Change the type of input to password or text
+         function Toggle() {
+             var temp = document.getElementById("passwordInput");
+             if (temp.type === "password") {
+                 temp.type = "text";
+             }
+             else {
+                 temp.type = "password";
+             }
+         }
