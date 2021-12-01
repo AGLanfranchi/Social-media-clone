@@ -26,12 +26,11 @@ function callApi(data) {
                             let password = data.get("password");
                         
                                 
-                         callApi({"username": username, "password": password})
-                         .then(user => {
+                         callApi({"username": username, "password": password}).then(user => {
 
                              // Token code here
 
-                            function(user) {
+                            // function(user) {
                             user.json().then(user => {
                                 console.log(user)
 
@@ -54,11 +53,9 @@ function callApi(data) {
                                 window.location = 'http://localhost:3000/new-posts.html'
                              }
                              
-                         })
+                                                    })
 
-
-
-         });
+                         });
 
          // Change the type of input to password or text
          function Toggle() {
@@ -72,4 +69,5 @@ function callApi(data) {
             }
         }
     })
+    
     
