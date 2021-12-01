@@ -4,29 +4,21 @@ const UUID = require('uuid')
 
 
 module.exports = {
-/*
-    test(){
-        Database.connect().then(Database.connect().then(db =>{
-            console.log(db)
-          
-            db.get('SELECT * FROM users').then(result =>{
-              console.log(result)
-            })
-          }))
-    },
 
-    */
     
     login(username, password, callback) {
         Database.connect().then(db => {
-            
-            
-            
             db.get('SELECT * FROM users WHERE username = ? AND password = ?', username, password).then(result => {
-                // if (result) {
-                    
+                if (result && !result.token) {
+                    // Create an API toekn for the uer if they don't have one
+                    let token = UUID.v4();
+                    db.run('UPDATE users SET token = ? WHERE id = ?', token, result.id).then(() => {
+                        result.token = token
+                        callback(result)
+                    })
+                } else {
                     callback(result)
-                // }
+                }
             })
             .catch(err => {
                 console.log('users.login failed with error:' + err)
