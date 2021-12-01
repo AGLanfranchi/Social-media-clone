@@ -1,8 +1,8 @@
-// Use fetch to call the  API
+// Use fetch to call the API
 
 function callApi(data) {
     let url="/api/login"
- let options ={
+    let options ={
      method: "POST",
      headers: {
          "Content-Type" : "application/json"
@@ -24,18 +24,33 @@ function callApi(data) {
                             let data = new FormData(formInput);
 		                    let username = data.get("username");
                             let password = data.get("password");
+                        
                                 
                          callApi({"username": username, "password": password})
-                         .then(response => {
+                         .then(user => {
+
+                             // Token code here
+
+                            function(user) {
+                            user.json().then(user => {
+                                console.log(user)
+
+                                //Log the user in by storing their token
+
+                                if (user && user.token) {
+                                    window.sessionStorage.setItem('token', user.token) // Save the user's API token
+                                    window.sessionStorage.setItem('username', user.username)
+                                }
+                           
 
                             // Hides or removes the HTML error message depedning on login 
 
                             let loginErrorMsg = document.getElementById("loginErrorMessage");
 
-                             if(!response) {
-                                loginErrorMsg.classList.remove('hidden');
+                             if(!user) {
+                                loginErrorMsg.classList.remove('hidden')
                              } else {
-                                loginErrorMsg.classList.add('hidden');
+                                loginErrorMsg.classList.add('hidden')
                                 window.location = 'http://localhost:3000/new-posts.html'
                              }
                              
@@ -54,4 +69,7 @@ function callApi(data) {
              else {
                  temp.type = "password";
              }
-         }
+            }
+        }
+    })
+    
