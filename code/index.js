@@ -29,8 +29,7 @@ app.post('/api/posts', function (req, res) {
   Posts.insertPost(req.body.title, req.body.body, result => {
 
     console.log(req.body);
-    res.send({});
-    
+
     if (!result) {
       result = false
     }

@@ -10,9 +10,9 @@ module.exports = {
 
             callback()
         })
-        .catch(err => {
-            console.log('post failed ith error:' + err)
-            })
+         .catch(err => {
+             console.log('post failed with error:' + err)
+             })
         })
     }
 }
