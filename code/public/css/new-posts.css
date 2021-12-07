@@ -73,3 +73,22 @@ html {
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
+
+  /* NAVIGATION *****************************************************************/
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav li {
+    /* Allow menu options to flow across the page and wrap */
+    display: inline-block;
+    padding: 0.5rem; 
+  }
+  
+  nav a {
+    color:#000080;
+    position: relative; left: 3rem; 
+  }

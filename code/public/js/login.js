@@ -50,7 +50,7 @@ function callApi(data) {
                                 loginErrorMsg.classList.remove('hidden')
                              } else {
                                 loginErrorMsg.classList.add('hidden')
-                                window.location = 'http://localhost:3000/new-posts.html'
+                                window.location = 'http://localhost:3000/index.html'
                              }
                              
                                                     })
