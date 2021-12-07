@@ -1,0 +1,27 @@
+From login.js
+
+//Log the user in by storing their token
+                                // Hides or removes the HTML error message depedning on login 
+
+                                // let loginErrorMsg = document.getElementById("loginErrorMessage")
+
+                                // if (user && user.token) {
+                                //     window.sessionStorage.setItem('token', user.token) // Save the user's API token
+                                //     window.sessionStorage.setItem('username', user.username)
+                                //     loginErrorMsg.classList.add('hidden')
+                                //     window.location = 'http://localhost:3000/index.html'
+                                // } else {
+                                //     loginErrorMsg.classList.remove('hidden')
+                                // }
+                           
+
+                            // Hides or removes the HTML error message depedning on login 
+
+                            // let loginErrorMsg = document.getElementById("loginErrorMessage")
+
+                            //  if(!user) {
+                            //     loginErrorMsg.classList.remove('hidden')
+                            //  } else {
+                            //     loginErrorMsg.classList.add('hidden')
+                            //     window.location = 'http://localhost:3000/index.html'
+                            //  }
