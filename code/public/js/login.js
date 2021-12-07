@@ -1,3 +1,13 @@
+// Change the type of input to password or text
+function Toggle() {
+    var temp = document.getElementById("passwordInput");
+    if (temp.type === "password") {
+        temp.type = "text";
+    } else {
+        temp.type = "password";
+    }
+   }  
+
 // Use fetch to call the API
 
 function callApi(data) {
@@ -30,9 +40,6 @@ function callApi(data) {
 
                              // Token code here
 
-                            // function(user) {
-                            user.json().then(user => {
-                                console.log(user)
 
                                 //Log the user in by storing their token
 
@@ -56,16 +63,7 @@ function callApi(data) {
                                                     })
 
                          });
-
-         // Change the type of input to password or text
-         function Toggle() {
-             var temp = document.getElementById("passwordInput");
-             if (temp.type === "password") {
-                 temp.type = "text";
-             } else {
-                 temp.type = "password";
-             }
-            }       
-    })
+   
+ 
     
     
