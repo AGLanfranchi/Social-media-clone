@@ -62,12 +62,10 @@ function callApi(data) {
              var temp = document.getElementById("passwordInput");
              if (temp.type === "password") {
                  temp.type = "text";
-             }
-             else {
+             } else {
                  temp.type = "password";
              }
-            }
-        }
+            }       
     })
     
     
