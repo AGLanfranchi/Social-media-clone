@@ -8,7 +8,22 @@ function Toggle() {
     }
    }  
 
+   function login(user) {
+    let loginErrorMsg = document.getElementById("loginErrorMessage")
+
+    if (user && user.token) {
+        window.sessionStorage.setItem('token', user.token) // Save the user's API token
+        window.sessionStorage.setItem('username', user.username)
+        loginErrorMsg.classList.add('hidden')
+        window.location = 'http://localhost:3000/index.html'
+    } else {
+        loginErrorMsg.classList.remove('hidden')
+    }
+   }
+
 // Use fetch to call the API
+
+// function callApi(url, data) look at moving this later to another file
 
 function callApi(data) {
     let url="/api/login"
@@ -36,34 +51,8 @@ function callApi(data) {
                             let password = data.get("password");
                         
                                 
-                         callApi({"username": username, "password": password}).then(user => {
-
-                             // Token code here
-
-
-                                //Log the user in by storing their token
-
-                                if (user && user.token) {
-                                    window.sessionStorage.setItem('token', user.token) // Save the user's API token
-                                    window.sessionStorage.setItem('username', user.username)
-                                }
-                           
-
-                            // Hides or removes the HTML error message depedning on login 
-
-                            let loginErrorMsg = document.getElementById("loginErrorMessage");
-
-                             if(!user) {
-                                loginErrorMsg.classList.remove('hidden')
-                             } else {
-                                loginErrorMsg.classList.add('hidden')
-                                window.location = 'http://localhost:3000/index.html'
-                             }
-                             
-                                                    })
-
+                         callApi({"username": username, "password": password}).then(login)
                          });
    
  
-    
     

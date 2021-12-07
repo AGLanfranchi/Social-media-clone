@@ -28,17 +28,7 @@
              callApi({"title": title, "body": body})
              .then(response => {
 
-                // Hides or removes the HTML error message depedning on login 
                 
-
-                /*let loginErrorMsg = document.getElementById("loginErrorMessage");
-
-                 if(!response) {
-                    loginErrorMsg.classList.remove('hidden');
-                 } else {
-                    loginErrorMsg.classList.add('hidden');
-                    window.location = 'http://localhost:3000/new-posts.html'
-                 }*/
              })
 
 
