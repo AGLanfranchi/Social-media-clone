@@ -20,7 +20,7 @@ module.exports = {
                 callback(result)
             })
             .catch(err => {
-                console.log('post failed with error:' + err)
+                console.log('Get posts failed with error:' + err)
             })
         })
     }
