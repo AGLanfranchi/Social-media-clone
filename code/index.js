@@ -6,7 +6,6 @@ const Users = require('./src/users.js')
 const Posts = require('./src/posts.js')
 const funcs = require('./src/funcs.js')
 const { request } = require('express')
-const posts = require('./src/posts.js')
 
 
 // Tell Express to server HTML, JS, CSS etc from the public/ folder
@@ -44,11 +43,15 @@ app.get('/api/posts', (req, res) => {
 
   let limit = 3
   let offset = req.query.offset
-
-  posts.getPosts(offset, limit, (result) => {
-    res.json(result)
+  console.log(offset)
+  Posts.getPosts(offset, limit, (result) => {
+  res.json(result) 
   })
+
+  // res.send({})
 })
+
+
 
 // Tell us where we're running from
 console.log("Server running on http://localhost:" + port)
