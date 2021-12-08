@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <mainid id = "mainBody">
+    <main id = "mainBody">
         <header>
             <div id="logo">
                 <img src="images/Lifeinvader Logo.png" alt="The logo" style="width:150px; height:70px;">
@@ -25,6 +25,27 @@
         </ul>
         </header>
     <h1>Home page</h1>
+    
+    
+
+    <script>
+        let itemsPerPage = 3
+        let currentPage = 0
+
+        function loadPost() {
+            let offset = itemsperPage * currentPage
+
+            fetch('/api/posts?offset=' + offset).then(result => {
+                //Display the posts in the page
+
+            })
+        }
+
+        function nextPage() {
+            currentPage++
+            loadPost()
+        }
+    </script>
 
     <footer>
         <a href="q2b_dummy.html" tabindex="1">Copyright</a> | 
