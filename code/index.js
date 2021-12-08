@@ -40,12 +40,13 @@ app.post('/api/posts', function (req, res) {
 })
 
 app.get('/api/posts', (req, res) => {
-
   let limit = 3
   let offset = req.query.offset
+
   console.log(offset)
+  
   Posts.getPosts(offset, limit, (result) => {
-  res.json(result) 
+    res.json(result) 
   })
 
   // res.send({})
