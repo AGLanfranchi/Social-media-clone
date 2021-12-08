@@ -26,25 +26,37 @@
         </header>
     <h1>Home page</h1>
     
-    
+    <template id="post-template">
+        <div class="posts">
+            <h2></h2>
+            <div class="body"></div>
+        </div>
+    </template>
+
+    <button onclick="nextPage()">Load more...</button>
 
     <script>
         let itemsPerPage = 3
         let currentPage = 0
 
-        function loadPost() {
-            let offset = itemsperPage * currentPage
+        function loadPosts() {
+            let offset = itemsPerPage * currentPage
 
             fetch('/api/posts?offset=' + offset).then(result => {
                 //Display the posts in the page
+                if (result.length == 0)
+                {}
 
             })
         }
 
         function nextPage() {
             currentPage++
-            loadPost()
+            loadPosts()
         }
+
+        loadPosts()
+
     </script>
 
     <footer>
