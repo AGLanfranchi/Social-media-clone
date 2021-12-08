@@ -26,13 +26,6 @@
         </header>
     <h1>Home page</h1>
     
-    <template id="post-template">
-        <div class="posts">
-            <h2></h2>
-            <div class="body"></div>
-        </div>
-    </template>
-
     <button onclick="nextPage()">Load more...</button>
 
     <script>
@@ -44,8 +37,11 @@
 
             fetch('/api/posts?offset=' + offset).then(result => {
                 //Display the posts in the page
-                if (result.length == 0)
-                {}
+                if (result.length == 0) {
+                    
+                } else {
+                    
+                }
 
             })
         }
@@ -56,18 +52,27 @@
         }
 
         loadPosts()
-
     </script>
 
-    <footer>
-        <a href="q2b_dummy.html" tabindex="1">Copyright</a> | 
-        <a href="q2b_dummy.html" tabindex="2">Privacy</a> | 
-        <a href="q2b_dummy.html" tabindex="3">FAQs</a> | 
-        <a href="q2b_dummy.html" tabindex="5">Conditions of use</a>
-    </footer>
+        <template id="post-template">
+            <div class="posts">
+                <h2></h2>
+                <div class="body"></div>
+            </div>
+        </template>
+
+
+        <footer>
+            <a href="q2b_dummy.html" tabindex="1">Copyright</a> | 
+            <a href="q2b_dummy.html" tabindex="2">Privacy</a> | 
+            <a href="q2b_dummy.html" tabindex="3">FAQs</a> | 
+            <a href="q2b_dummy.html" tabindex="5">Conditions of use</a>
+        </footer>
 
     </main>
     
 </body>
+
+    <!-- <script type= "text/javascript" src= "/js/index.js"></script> -->
 
 </html>
