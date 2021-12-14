@@ -25,22 +25,42 @@
         </ul>
         </header>
     <h1>Home page</h1>
+
+    <div id ="posts-container"></div>
     
     <button onclick="nextPage()">Load more...</button>
 
     <script>
+
+        function showPost(post) {
+            let template = document.getElementById("post-template")
+            let container = document.getElementById("posts-container")
+
+            let clone = template.content.firstElementChild.cloneNode(true)
+
+            clone.getElementsByTagName('h2')[0].textContent = post.title
+            clone.getElementsByClassName('body')[0].textContent = post.body
+
+            container.appendChild(clone)
+        }
+
         let itemsPerPage = 3
         let currentPage = 0
 
         function loadPosts() {
             let offset = itemsPerPage * currentPage
 
-            fetch('/api/posts?offset=' + offset).then(result => {
+            fetch('/api/posts?offset=' + offset).then(response => {
                 //Display the posts in the page
-                if (result.length == 0) {
+               
+                response.json().then(result => {
+                    console.log(result)
+                    result.forEach(showPost)
+                })
+                // if (result.length == 0) {
 
-                    console.log()
-                } 
+                //     console.log()
+                // } 
             })
         }
 
@@ -51,16 +71,8 @@
 
         loadPosts()
 
-        let template = document.getElementById("post-template")
-        let container = document.getElementById("posts-container")
-
-        let clone = template.content.firstElementChild.cloneNode(true)
-
-        clone.getElementByTagName('h2')[0].textContent = "My Post Title"
-        clone.getElementByClassName('body')[0].textContent = "My post content"
-
-        container.appendChild(clone)
         
+
 0    </script>
 
         <template id="post-template">
