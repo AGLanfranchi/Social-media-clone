@@ -12,7 +12,6 @@ const { request } = require('express')
 app.use(express.static('public'))
 app.use(express.json())
 
-/
 // Our API routes will be here
 app.post('/api/login', function (req, res) {
   Users.login(req.body.username, req.body.password, result => {
