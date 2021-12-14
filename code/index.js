@@ -24,7 +24,7 @@ app.post('/api/login', function (req, res) {
   })
 })
 
-app.post('/api/posts', function (req, res) {
+app.post('/api/post', function (req, res) {
   Posts.insertPost(req.body.title, req.body.body, result => {
 
     console.log(req.body);

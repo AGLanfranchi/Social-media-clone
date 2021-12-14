@@ -1,7 +1,7 @@
  // Use fetch to call the  API
 
  function callApi(data) {
-    let url="/api/posts"
+    let url="/api/post"
     let options ={
         method: "POST",
              headers: {
