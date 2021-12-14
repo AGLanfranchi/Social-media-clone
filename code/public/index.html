@@ -38,11 +38,9 @@
             fetch('/api/posts?offset=' + offset).then(result => {
                 //Display the posts in the page
                 if (result.length == 0) {
-                    
-                } else {
-                    
-                }
 
+                    console.log()
+                } 
             })
         }
 
@@ -52,7 +50,18 @@
         }
 
         loadPosts()
-    </script>
+
+        let template = document.getElementById("post-template")
+        let container = document.getElementById("posts-container")
+
+        let clone = template.content.firstElementChild.cloneNode(true)
+
+        clone.getElementByTagName('h2')[0].textContent = "My Post Title"
+        clone.getElementByClassName('body')[0].textContent = "My post content"
+
+        container.appendChild(clone)
+        
+0    </script>
 
         <template id="post-template">
             <div class="posts">
