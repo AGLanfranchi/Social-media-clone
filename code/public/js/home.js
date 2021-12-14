@@ -1,5 +1,3 @@
-
-
 function showPost(post) {
     let template = document.getElementById("post-template")
     let container = document.getElementById("posts-container")
