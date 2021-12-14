@@ -48,7 +48,6 @@ app.get('/api/posts', (req, res) => {
   Posts.getPosts(offset, limit, (result) => {
     res.json(result) 
   })
-
   // res.send({})
 })
 
