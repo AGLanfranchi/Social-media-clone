@@ -27,7 +27,7 @@ module.exports = {
 
     imageUpload(filepath, callback) {
         Database.connect().then(db =>  {
-            db.run('INSERT INTO images("filepath") VALUES(?)', id, filepath).then(result => {
+            db.run('INSERT INTO images("filepath") VALUES(?)', filepath).then(result => {
                 callback()
             })
             .catch(err => {
