@@ -4,9 +4,10 @@
     let url="/api/post"
     let options ={
         method: "POST",
-        //      headers: {
+              headers: {
+                "X-API-Token": window.sessionStorage.getItem('token')
         //         "Content-Type" : "application/json"
-        // },
+         },
                 body: data
                 // JSON.stringify(data)
             }
