@@ -60,9 +60,23 @@ app.post('/api/post', upload.single('image'), function (req, res) {
     Users.findByToken(apiToken, user => {
       if(user) {
         console.log(req.body)
-        Posts.insertPost(req.body.title, req.body.body, user.id, result => {
 
-          console.log(req.body);
+        let filepath = req.file.filename
+
+        // function needs to go here for images....
+        Posts.imageUpload(filepath, postImage => {
+
+                Posts.insertPost(req.body.title, req.body.body, user.id, postImage.lastID, result => {
+
+                console.log(req.body);
+            
+                if (!result) {
+                  result = false
+                }
+            
+                res.json(result)
+            
+              })
       
           if (!result) {
             result = false
@@ -93,7 +107,6 @@ app.get('/api/posts', (req, res) => {
   Posts.getPosts(offset, limit, (result) => {
     res.json(result) 
   })
-  // res.send({})
 })
 
 
