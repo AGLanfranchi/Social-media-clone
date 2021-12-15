@@ -12,6 +12,16 @@ const { request } = require('express')
 app.use(express.static('public'))
 app.use(express.json())
 
+function okResponse(res, code) {
+  res.status(code).send({})
+}
+
+function notAllowed(res) {
+  res.status(401).send({
+      error: "Not authorised"
+  })
+}
+
 // Our API routes will be here
 app.post('/api/login', function (req, res) {
   Users.login(req.body.username, req.body.password, result => {
@@ -25,17 +35,40 @@ app.post('/api/login', function (req, res) {
 })
 
 app.post('/api/post', function (req, res) {
-  Posts.insertPost(req.body.title, req.body.body, result => {
+  //Get the API token from the header provided by the front-end fetch request
+  let apiToken = req.get('X-API-Token');
 
-    console.log(req.body);
+  if(apiToken) {
+    // Find user by token
+    Users.findByToken(apiToken, user => {
+      if(user) {
+        console.log(req.body)
+        Posts.insertPost(req.body.title, req.body.body, result => {
 
-    if (!result) {
-      result = false
-    }
-
-    res.json(result)
-
-  })
+          console.log(req.body);
+      
+          if (!result) {
+            result = false
+          }
+      
+          res.json(result)
+      
+        })
+        // Posts.create(req.body, user).then(result => {
+        //   // Return 201: Created response
+        //   okResponse(res, 201);
+        // })
+      } else {
+        // Invalid API token
+        notAllowed(res)
+        console.log("Invalid API token")
+      }
+    })
+  } else {
+    // Missing API token
+    notAllowed(res)
+    console.log("Missing API token")
+  }
 })
 
 app.get('/api/posts', (req, res) => {
