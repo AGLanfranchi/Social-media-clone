@@ -14,17 +14,6 @@ module.exports = {
         })
     },
 
-    getPosts(offset, limit, callback) {
-        Database.connect().then(db =>  {
-            db.all('SELECT * FROM posts ORDER BY id DESC LIMIT ? OFFSET ?', limit, offset).then(result => {
-                callback(result)
-            })
-            .catch(err => {
-                console.log('Get posts failed with error:' + err)
-            })
-        })
-    },
-
     imageUpload(filepath, callback) {
         Database.connect().then(db =>  {
             db.run('INSERT INTO images("filepath") VALUES(?)', filepath).then(result => {
@@ -34,5 +23,17 @@ module.exports = {
                 console.log('Image upload failed with error:' + err)
             })
         })
+    },
+
+    getPosts(offset, limit, callback) {
+        Database.connect().then(db =>  {
+            db.all('SELECT * FROM posts ORDER BY id DESC LIMIT ? OFFSET ?', limit, offset).then(result => {
+                callback(result)
+            })
+            .catch(err => {
+                console.log('Get posts failed with error:' + err)
+            })
+        })
     }
+    
 }
