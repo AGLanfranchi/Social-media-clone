@@ -9,7 +9,7 @@ module.exports = {
                 callback()
             })
             .catch(err => {
-                console.log('post failed with error:' + err)
+                console.log('Post failed with error:' + err)
             })
         })
     },
@@ -21,6 +21,17 @@ module.exports = {
             })
             .catch(err => {
                 console.log('Get posts failed with error:' + err)
+            })
+        })
+    },
+
+    imageUpload(filepath, callback) {
+        Database.connect().then(db =>  {
+            db.run('INSERT INTO images("filepath") VALUES(?)', id, filepath).then(result => {
+                callback()
+            })
+            .catch(err => {
+                console.log('Image upload failed with error:' + err)
             })
         })
     }
