@@ -3,9 +3,9 @@ const UUID = require('uuid')
 
 module.exports = {
 
-    insertPost(title, body, user_id, callback) {
+    insertPost(title, body, user_id, image_id, callback) {
         Database.connect().then(db =>  {
-            db.run('INSERT INTO posts("title", "body", "user_id") VALUES(?, ?, ?)', title, body, user_id).then(result => {
+            db.run('INSERT INTO posts("title", "body", "user_id", "image_id") VALUES(?, ?, ?, ?)', title, body, user_id, image_id).then(result => {
                 callback()
             })
             .catch(err => {
@@ -28,7 +28,7 @@ module.exports = {
     imageUpload(filepath, callback) {
         Database.connect().then(db =>  {
             db.run('INSERT INTO images("filepath") VALUES(?)', filepath).then(result => {
-                callback()
+                callback(result)
             })
             .catch(err => {
                 console.log('Image upload failed with error:' + err)
