@@ -27,7 +27,7 @@ module.exports = {
 
     getPosts(offset, limit, callback) {
         Database.connect().then(db =>  {
-            db.all('SELECT * FROM posts ORDER BY id DESC LIMIT ? OFFSET ?', limit, offset).then(result => {
+            db.all('SELECT * FROM posts JOIN images ON posts.image_id = images.id ORDER BY id DESC LIMIT ? OFFSET ?', limit, offset).then(result => {
                 callback(result)
             })
             .catch(err => {
