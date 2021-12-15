@@ -7,7 +7,7 @@
         //      headers: {
         //         "Content-Type" : "application/json"
         // },
-                body: new FormData(form)
+                body: data
                 // JSON.stringify(data)
             }
 
@@ -23,10 +23,10 @@
              // Capture the input values using FormData
 
                 let data = new FormData(formInput);
-                let title = data.get("title");
-                let body = data.get("body");
+                // let title = data.get("title");
+                // let body = data.get("body");
                     
-             callApi({"title": title, "body": body})
+             callApi(data)
              .then(response => {
 
                 
