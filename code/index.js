@@ -7,6 +7,21 @@ const Posts = require('./src/posts.js')
 const funcs = require('./src/funcs.js')
 const { request } = require('express')
 
+const UUID = require('uuid')
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, './public/uploads')
+  },
+  filename: function (req, file, callback) {
+    callback(null, UUID.v4() + '-' + file.originalname)
+  }
+})
+
+const upload = multer({
+  storage: storage
+})
 
 // Tell Express to server HTML, JS, CSS etc from the public/ folder
 app.use(express.static('public'))
@@ -34,7 +49,9 @@ app.post('/api/login', function (req, res) {
   })
 })
 
-app.post('/api/post', function (req, res) {
+app.post('/api/post', upload.single('image'), function (req, res) {
+  console.log(req.body, req.file)
+  res.send({})
   //Get the API token from the header provided by the front-end fetch request
   let apiToken = req.get('X-API-Token');
 
@@ -43,7 +60,7 @@ app.post('/api/post', function (req, res) {
     Users.findByToken(apiToken, user => {
       if(user) {
         console.log(req.body)
-        Posts.insertPost(req.body.title, req.body.body, result => {
+        Posts.insertPost(req.body.title, req.body.body, user.id, result => {
 
           console.log(req.body);
       
@@ -54,10 +71,6 @@ app.post('/api/post', function (req, res) {
           res.json(result)
       
         })
-        // Posts.create(req.body, user).then(result => {
-        //   // Return 201: Created response
-        //   okResponse(res, 201);
-        // })
       } else {
         // Invalid API token
         notAllowed(res)
