@@ -25,3 +25,39 @@ From login.js
                             //     loginErrorMsg.classList.add('hidden')
                             //     window.location = 'http://localhost:3000/index.html'
                             //  }
+
+
+                            function showPost(post) {
+    let template = document.getElementById("post-template")
+    let container = document.getElementById("posts-container")
+
+    post.forEach(posts => {      
+    let clone = template.content.firstElementChild.cloneNode(true)
+    clone.getElementsByTagName('h2')[0].textContent = post.title
+    clone.getElementsByClassName('body')[0].textContent = post.body
+    if (posts.image_id) {
+            clone.getElementsByTagName('img')[0].src = "/uploads/" + posts.filepath
+        }
+
+    container.appendChild(clone)
+    })
+}
+
+let itemsPerPage = 3
+let currentPage = 0
+
+function loadPosts() {
+    let offset = itemsPerPage * currentPage
+
+    fetch('/api/posts?offset=' + offset + '&limit=' + limit, {
+        }).then(function(result) {
+        //Display the posts in the page
+       
+        result.json().then(result => {
+            console.log(result)
+            showPost(result)
+        })
+    })
+
+    offset += 5
+}
