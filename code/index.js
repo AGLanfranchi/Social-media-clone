@@ -50,25 +50,27 @@ app.post('/api/login', function (req, res) {
 })
 
 app.post('/api/post', upload.single('image'), function (req, res) {
-  console.log(req.body, req.file)
-  res.send({})
   //Get the API token from the header provided by the front-end fetch request
   let apiToken = req.get('X-API-Token');
 
   if(apiToken) {
     // Find user by token
+    console.log(apiToken)
     Users.findByToken(apiToken, user => {
+      console.log(user)
       if(user) {
-        console.log(req.body)
-
-        let filepath = req.file.filename
+        console.log(req.file)
+        
+        if (req.file){
+          let filepath = req.file.filename
+         
 
         // function needs to go here for images....
         Posts.imageUpload(filepath, postImage => {
 
                 Posts.insertPost(req.body.title, req.body.body, user.id, postImage.lastID, result => {
 
-                console.log(req.body);
+                // console.log(req.body);
             
                 if (!result) {
                   result = false
@@ -85,6 +87,20 @@ app.post('/api/post', upload.single('image'), function (req, res) {
           res.json(result)
       
         })
+        } else {
+          
+          Posts.insertPost(req.body.title, req.body.body, user.id, null, result => {
+
+            // console.log(req.body);
+        
+            if (!result) {
+              result = false
+            }
+        
+            res.json(result)
+        
+          })
+        }
       } else {
         // Invalid API token
         notAllowed(res)
