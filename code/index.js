@@ -6,6 +6,7 @@ const Users = require('./src/users.js')
 const Posts = require('./src/posts.js')
 const funcs = require('./src/funcs.js')
 const { request } = require('express')
+const htmlEscaper = require('html-escaper')
 
 const UUID = require('uuid')
 const multer = require('multer');
