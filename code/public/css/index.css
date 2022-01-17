@@ -11,10 +11,6 @@ html {
     }
   
     
-    img{
-      width: 50%
-    }
-    
     /* PAGE FORMATTING ************************************************************/
   
     body {
@@ -52,6 +48,14 @@ html {
       margin-bottom: 10px;
     }
   
+    img {
+      width: 50%
+    }
+
+    #posts-container {
+      text-align: center;     
+    }
+    
   footer {
     text-align:center;
     color: #000080;
@@ -76,19 +80,20 @@ html {
   
   /* NAVIGATION *****************************************************************/
   
-  nav ul {
+  ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    
   }
   
-  nav li {
+  li {
     /* Allow menu options to flow across the page and wrap */
     display: inline-block;
     padding: 0.5rem; 
   }
   
-  nav a {
+  a {
     color:#000080;
     position: relative; left: 3rem; 
   }
