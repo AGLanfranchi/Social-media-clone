@@ -36,9 +36,9 @@ module.exports = {
         })
     },
     
-    getComments(offset, limit, callback) {
+    getComments(callback) {
         Database.connect().then(db =>  {
-            db.all('SELECT * FROM comments WHERE post_id = ? ORDER BY id ASC LIMIT ? OFFSET ?', limit, offset).then(result => {
+            db.all('SELECT * FROM comments WHERE post_id = ? ORDER BY id ASC', limit, offset).then(result => {
                 callback(result)
             })
             .catch(err => {
