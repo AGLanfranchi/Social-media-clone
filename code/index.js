@@ -114,6 +114,11 @@ app.post('/api/post', upload.single('image'), function (req, res) {
   }
 })
 
+app.post('/api/comment', function (req, res) {
+//  Somthing goes here probably....
+})
+        
+
 app.get('/api/posts', (req, res) => {
   let limit = 3
   let offset = req.query.offset
