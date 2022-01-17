@@ -9,6 +9,10 @@ function showPosts(posts) {
         if (post.image_id) {
                 clone.getElementsByTagName('img')[0].src = "/uploads/" + post.filepath
             }
+
+        if (post.comment_id) {
+            clone.getElementsByClassName('comments')[0].textContent = post.body
+        }
     
         container.appendChild(clone)
         })
