@@ -17,10 +17,10 @@ module.exports = {
 
     insertComments(id, body, post_id, user_id, callback) {
         Database.connect().then(db =>  {
-            // XSS code. Need to install html-escaper npm
+            // XSS code
             // title = htmlEscaper.escape(title)
             // body = htmlEscaper.escape(body)
-            db.run('INSERT INTO posts("id", "body", "post_id", "user_id") VALUES(?, ?, ?, ?)', id, body, post_id, user_id).then(result => {
+            db.run('INSERT INTO comments("id", "body", "post_id", "user_id") VALUES(?, ?, ?, ?)', id, body, post_id, user_id).then(result => {
                 callback()
             })
             .catch(err => {
