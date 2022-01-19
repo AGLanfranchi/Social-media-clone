@@ -30,22 +30,12 @@ module.exports = {
 
     getPosts(offset, limit, callback) {
         Database.connect().then(db =>  {
-            db.all('SELECT * FROM posts LEFT JOIN images ON posts.image_id = images.id ORDER BY id DESC LIMIT ? OFFSET ?', limit, offset).then(result => { callback(result)
+            db.all('SELECT * FROM posts LEFT JOIN images ON posts.image_id = images.id ORDER BY id DESC LIMIT ? OFFSET ?', limit, offset).then(result => { 
+                callback(result)
             })
             .catch(err => {
                 console.log('Get posts failed with error:' + err)
             })
         })
-    },
-    
-    getComments(callback) {
-        Database.connect().then(db =>  {
-            db.all('SELECT * FROM comments WHERE post_id = ? ORDER BY id ASC', limit, offset).then(result => {
-                callback(result)
-            })
-            .catch(err => {
-                console.log('Get comments failed with error:' + err)
-            })
-        })
-    }
+    } 
 }
