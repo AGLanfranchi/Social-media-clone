@@ -1,5 +1,6 @@
 const Database = require('./database.js')
 const UUID = require('uuid')
+const htmlEscaper = require('html-escaper')
 
 module.exports = {
 
@@ -9,23 +10,23 @@ module.exports = {
                 callback(result)
             })
             .catch(err => {
-                console.log('Get comments failed with error:' + err)
+                console.log('Get comments failed to get with error:' + err)
             })
         })
-    }
+    },
 
     insertComments(id, body, post_id, user_id, callback) {
         Database.connect().then(db =>  {
             // XSS code. Need to install html-escaper npm
             // title = htmlEscaper.escape(title)
             // body = htmlEscaper.escape(body)
-            db.run('INSERT INTO posts("title", "body", "user_id", "image_id") VALUES(?, ?, ?, ?)', title, body, user_id, image_id).then(result => {
+            db.run('INSERT INTO posts("id", "body", "post_id", "user_id") VALUES(?, ?, ?, ?)', id, body, post_id, user_id).then(result => {
                 callback()
             })
             .catch(err => {
-                console.log('Post failed with error:' + err)
+                console.log('Comments failed to post with error:' + err)
             })
         })
-    },
+    }
 
 }
