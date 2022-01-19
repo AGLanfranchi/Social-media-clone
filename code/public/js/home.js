@@ -1,3 +1,18 @@
+function callApi(data) {
+    let url="/api/comment"
+    let options ={
+        method: "POST",
+              headers: {
+                "X-API-Token": window.sessionStorage.getItem('token')
+        //         "Content-Type" : "application/json"
+         },
+                body: data
+                // JSON.stringify(data)
+            }
+
+    return fetch(url, options).then(response => response.json());
+}
+
 function showPosts(posts) {
     let template = document.getElementById("post-template")
     let container = document.getElementById("posts-container")
