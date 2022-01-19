@@ -118,15 +118,14 @@ app.post('/api/post', upload.single('image'), function (req, res) {
 
 app.post('/api/comment', function (req, res) {
   //Get the API token from the header provided by the front-end fetch request
+  console.log(req.body)
   let apiToken = req.get('X-API-Token');
-
-  if (apiToken) {
-    Users.findByToken(apiToken, (user) => {
-      if (user) {
-        
-      }
-    })
-  }     
+  Users.findByToken(apiToken, user => {
+        Comments.insertComment(req.body.body, post_id, user_id, result =>{
+          console.log(result)
+          res.status(200).json(result);
+        })
+    })     
 })
         
 
