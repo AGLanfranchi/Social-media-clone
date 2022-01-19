@@ -15,7 +15,7 @@ module.exports = {
         })
     },
 
-    insertComments(body, post_id, user_id, callback) {
+    insertComment(body, post_id, user_id, callback) {
         Database.connect().then(db =>  {
             // XSS code
             // title = htmlEscaper.escape(title)
