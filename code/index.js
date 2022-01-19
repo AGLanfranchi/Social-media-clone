@@ -4,6 +4,7 @@ const port = 3000
 
 const Users = require('./src/users.js')
 const Posts = require('./src/posts.js')
+const Comments = require('./src/comments.js')
 const funcs = require('./src/funcs.js')
 const { request } = require('express')
 const htmlEscaper = require('html-escaper')
@@ -116,7 +117,16 @@ app.post('/api/post', upload.single('image'), function (req, res) {
 })
 
 app.post('/api/comment', function (req, res) {
-//  Somthing goes here probably....
+  //Get the API token from the header provided by the front-end fetch request
+  let apiToken = req.get('X-API-Token');
+
+  if (apiToken) {
+    Users.findByToken(apiToken, (user) => {
+      if (user) {
+        
+      }
+    })
+  }     
 })
         
 
