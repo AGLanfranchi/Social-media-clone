@@ -10,21 +10,21 @@ module.exports = {
                 callback(result)
             })
             .catch(err => {
-                console.log('Get comments failed to get with error:' + err)
+                console.log('Get comments failed with error:' + err)
             })
         })
     },
 
-    insertComments(id, body, post_id, user_id, callback) {
+    insertComments(body, post_id, user_id, callback) {
         Database.connect().then(db =>  {
             // XSS code
             // title = htmlEscaper.escape(title)
             // body = htmlEscaper.escape(body)
-            db.run('INSERT INTO comments("id", "body", "post_id", "user_id") VALUES(?, ?, ?, ?)', id, body, post_id, user_id).then(result => {
+            db.run('INSERT INTO comments("body", "post_id", "user_id") VALUES(?, ?, ?)', body, post_id, user_id).then(result => {
                 callback()
             })
             .catch(err => {
-                console.log('Comments failed to post with error:' + err)
+                console.log('Post comments failed with error:' + err)
             })
         })
     }
