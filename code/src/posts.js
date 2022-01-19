@@ -1,11 +1,12 @@
 const Database = require('./database.js')
 const UUID = require('uuid')
+const htmlEscaper = require('html-escaper')
 
 module.exports = {
 
     insertPost(title, body, user_id, image_id, callback) {
         Database.connect().then(db =>  {
-            // XSS code. Need to install html-escaper npm
+            // XSS code
             // title = htmlEscaper.escape(title)
             // body = htmlEscaper.escape(body)
             db.run('INSERT INTO posts("title", "body", "user_id", "image_id") VALUES(?, ?, ?, ?)', title, body, user_id, image_id).then(result => {
