@@ -24,8 +24,8 @@
              // Capture the input values using FormData
 
                 let data = new FormData(formInput);
-                // let title = data.get("title");
-                // let body = data.get("body");
+                let title = data.get("title");
+                let body = data.get("body");
                     
              callApi(data)
              .then(response => {
