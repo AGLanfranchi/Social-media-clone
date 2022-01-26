@@ -1,44 +1,31 @@
 //  Call register API
 
-function callApi(data) {
-  let url="/api/register"
-  let options ={
-  method: "POST",
-  headers: {
+let formInput = document.getElementById('registerForm');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  let data = new FormData(formInput);
+
+
+  //Call register API
+
+  fetch('/api/register', {
+    headers: {
       "Content-Type" : "application/json"
-  },
-  body: JSON.stringify(data)
-}
+    },
 
-  return fetch(url, options).then(response => response.json());
-}
+    method: "POST",
+    body: utils.formDataToJSON(data)
+  })
+// Deal wth response
 
+.then(function(result){
+  result.json().then(result => {
+    console.log(result);
 
-
-function checkRegistration() {
-  let username = document.forms["registerForm"]["usernameInput"];
-  let password = document.forms["registerForm"]["passwordInput"];
-  let passwordRepeat = document.forms["registerForm"]["passwordInputRepeat"];
-
-
-  if (username.value == "") {
-      window.alert(
-        "Please enter a valid e-mail address.");
-      email.focus();
-      return false;
-  }
-
-  if (password.value == "") {
-      window.alert("Please enter your password");
-      password.focus();
-      return false;
-  }
-
-  if (passwordRepeat.value != password.value) {
-    window.alert("Your passwords don't match");
-    password.focus();
-    return false;
-}
-
-  return true;
-}
+    if(result){
+      //TODO
+      }
+    })
+  })
+})
