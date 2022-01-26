@@ -141,6 +141,12 @@ app.get('/api/posts', (req, res) => {
 })
 
 
+app.post('/api/register', function (req, res) {
+  Users.register(req.body.username, req.body.password, function(result) {
+    res.json(result)
+  })
+})
+
 
 // Tell us where we're running from
 console.log("Server running on http://localhost:" + port)
