@@ -2,14 +2,6 @@ html {
   height: 100%;
 }
   
-  footer {
-    position:absolute;
-    bottom:0;
-    width:100%;
-    height:60px;   /* Height of the footer */
-    background:#6cf;
-  }
-
   #loginErrorMessage {
     width: 100%;
     height: 100%;
@@ -60,49 +52,44 @@ html {
   }
 
   #showPassordButton{
-    width: 100%;
-    padding: 7px;
-    border: none;
+    font-size: 1rem;
+    padding: 1rem;
+    width: 10rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    background: linear-gradient(90deg, rgb(8, 187, 254, 255)0%, rgb(43, 121, 255, 255)100%);
     border-radius: 5px;
-    color: white;
-    font-weight: bold;
-    background-color: #1c95c5;
-    cursor: pointer;
-    outline: none;
-    margin-top: 10px;
-    margin-bottom: 10px;
   }
 
   #showPassordButton:hover{
-    background-color: #276c88
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(83, 191, 231, 0.6);
+    transition: transform 150ms;
+    transform: scale(1.03);
   }
 
-  #showPassordButton:active{
-    background-color: #276c88;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
 
   #loginFormSubmit {
-    width: 100%;
-    padding: 7px;
-    border: none;
+    font-size: 1rem;
+    padding: 1rem;
+    width: 10rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    background: linear-gradient(90deg, rgb(8, 187, 254, 255)0%, rgb(43, 121, 255, 255)100%);
     border-radius: 5px;
-    color: white;
-    font-weight: bold;
-    background-color: #1c95c5;
-    cursor: pointer;
-    outline: none;
   }
 
   #loginFormSubmit:hover{
-    background-color: #276c88
-  }
-
-  #loginFormSubmit:active{
-    background-color: #276c88;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(83, 191, 231, 0.6);
+    transition: transform 150ms;
+    transform: scale(1.03);
   }
 
   /* PAGE FORMATTING ************************************************************/
@@ -110,37 +97,44 @@ html {
   body {
     height: 100%;
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif, cursive;
     display: grid;
     justify-items: center;
     align-items: center;
-    background-color: #3a3a3a;
+    background-color: #1B2838;
+    color: #acb2b8;
+  }
+
+  h1{
+    color: white;
   }
   
   #mainBody {
     width: 50%;
-    height: 70%;
     display: grid;
     justify-items: center;
     align-items: center;
-    background-color: white;
+    background-color: #2A475E;
     border-radius: 7px;
     box-shadow: 0px 0px 5px 2px black;
   }
 
-footer {
-  text-align:center;
-  color: #000080;
-  margin-left: auto;
-  margin-right: auto;
-  padding:0;
-}
+  footer {
+    position:absolute;
+    bottom:0;
+    width: 100%;
+    height: 50px;
+    background: #171a21;
+    text-align: center;
+ }
 
-footer a {
-	color:#000080;
-}
-
-header {
+ header {
+  background: #171a21;
+  position: relative;
+  width: 100%;
+  height: 104px;
+  margin: 0px auto;
+  z-index: 402;
   text-align: center;
   line-height: 5px;
 }
@@ -166,6 +160,6 @@ li {
 }
 
 a {
-  color:#000080;
-  position: relative; left: 3rem; 
+  color:#66C0F4;
+  position: relative;
 }
