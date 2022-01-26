@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,59 +8,62 @@
     <link rel="stylesheet" href="/css/index.css">
 </head>
 
-    <body>
-        <main id = "mainBody">
-            <header>
-                    <div id="logo">
-                        <img src="images/LifeinvaderLogo.png" alt="The logo" style="width:150px; height:70px;">
-                    </div>
-                        <nav aria-label="Main menu"></nav>
-                        <ul>
-                            <li>
-                            <a href="/login.html">Login</a>
-                            </li>
-                            <li>
-                            <a href="/new-posts.html">Posts</a>
-                            </li>
-                            <li>
-                            <a href="/register.html">Register</a>
-                            </li>
-                        </ul>
-            </header>
+<header>
+    <div id="logo">
+        <img src="images/LifeinvaderLogo.png" alt="The logo" style="width:150px; height:70px;">
+    </div>
+    <nav aria-label="Main menu"></nav>
+    <ul>
+        <li>
+            <a href="/login.html">Login</a>
+        </li>
+        <li>
+            <a href="/new-posts.html">Posts</a>
+        </li>
+        <li>
+            <a href="/register.html">Register</a>
+        </li>
+    </ul>
+</header>
+
+<body>
+    <main id="mainBody">
+
         <h1>Home page</h1>
 
-        <div id ="posts-container">
+        <div id="posts-container">
             <!-- Posts will show here -->
-            </div>
-        
+        </div>
+
         <button id="loadMoreButton" onclick="nextPage()">Load more</button>
 
-            <template id="post-template">
-                <div class="posts">
-                    <h2></h2>
-                    <img>
-                    <div class="body"></div>
-                    <div class="comments"></div>
-                    <!-- Post comments -->
-                    <form id="commentsForm" name="commentsForm" action="" method="post">
-                        <input id="commentsBox" type="text" name="commentsBox" class="commentsPostField" placeholder="Enter comment here" required>
-                        <input id="commentsSubmit" type="submit" value="Post"/>
-                    </form>
-                </div>
-            </template>
+        <template id="post-template">
+            <div class="posts">
+                <h2></h2>
+                <img>
+                <div class="body"></div>
+                <div class="comments"></div>
+                <!-- Post comments -->
+                <form id="commentsForm" name="commentsForm" action="" method="post">
+                    <input id="commentsBox" type="text" name="commentsBox" class="commentsPostField"
+                        placeholder="Enter comment here" required>
+                    <input id="commentsSubmit" type="submit" value="Post" />
+                </form>
+            </div>
+        </template>
 
 
-            <!-- <footer>
-                <a href="q2b_dummy.html" tabindex="1">Copyright</a> | 
-                <a href="q2b_dummy.html" tabindex="2">Privacy</a> | 
-                <a href="q2b_dummy.html" tabindex="3">FAQs</a> | 
-                <a href="q2b_dummy.html" tabindex="5">Conditions of use</a>
-            </footer> -->
+        <footer>
+            <a href="q2b_dummy.html" tabindex="1">Copyright</a> |
+            <a href="q2b_dummy.html" tabindex="2">Privacy</a> |
+            <a href="q2b_dummy.html" tabindex="3">FAQs</a> |
+            <a href="q2b_dummy.html" tabindex="5">Conditions of use</a>
+        </footer>
 
-        </main>
-        
-        <script src= "/js/home.js"></script>
+    </main>
 
-    </body>
+    <script src="/js/home.js"></script>
+
+</body>
 
 </html>

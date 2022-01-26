@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,50 +8,54 @@
     <link rel="stylesheet" href="/css/login.css">
 </head>
 
-    <body>
-        <main id = "mainBody">
-            <header>
-                <div id="logo">
-                    <img src="images/LifeinvaderLogo.png" alt="The logo" style="width:150px; height:70px;">
-                </div>
-            <nav aria-label="Main menu"></nav>
-                <ul>
-                    <li>
-                    <a href="/index.html">Home</a>
-                    </li>
-                    <li>
-                    <a href="/new-posts.html">Posts</a>
-                    </li>
-                    <li>
-                    <a href="/register.html">Register</a>
-                    </li>
-                </ul>
-            </header>
-            <h1>Login</h1>
-            
-            <div id="loginErrorMessage" class="hidden">
-                <p id="errorMessage">Invalid username <span id ="messageSecondLine"> and/or password.</span></p>
-                </div>
+<header>
+    <div id="logo">
+        <img src="images/LifeinvaderLogo.png" alt="The logo" style="width:150px; height:70px;">
+    </div>
+    <nav aria-label="Main menu"></nav>
+    <ul>
+        <li>
+            <a href="/index.html">Home</a>
+        </li>
+        <li>
+            <a href="/new-posts.html">Posts</a>
+        </li>
+        <li>
+            <a href="/register.html">Register</a>
+        </li>
+    </ul>
+</header>
 
-        
-                <form id="loginForm" name="loginForm">
-                    <input id="usernameInput" type="text" name="username" class="loginFormField" placeholder="Username" required>
-                    <input id="passwordInput" type="password" name="password" class="loginFormField" placeholder="Password" required>
-                    <input id="showPassordButton" type="button" value="Show password" onclick="Toggle()">
-                    <input id="loginFormSubmit" type="submit" value="Login"/>
-                </form>
+<body>
+    <main id="mainBody">
 
-                <footer>
-                    <a href="q2b_dummy.html" tabindex="1">Copyright</a> | 
-                    <a href="q2b_dummy.html" tabindex="2">Privacy</a> | 
-                    <a href="q2b_dummy.html" tabindex="3">FAQs</a> | 
-                    <a href="q2b_dummy.html" tabindex="5">Conditions of use</a>
-                </footer>
+        <h1>Login</h1>
 
-        </main>
+        <div id="loginErrorMessage" class="hidden">
+            <p id="errorMessage">Invalid username <span id="messageSecondLine"> and/or password.</span></p>
+        </div>
 
-        <script src= "/js/login.js"></script>
-        
-    </body>
+
+        <form id="loginForm" name="loginForm">
+            <input id="usernameInput" type="text" name="username" class="loginFormField" placeholder="Username"
+                required>
+            <input id="passwordInput" type="password" name="password" class="loginFormField" placeholder="Password"
+                required>
+            <input id="showPassordButton" type="button" value="Show password" onclick="Toggle()">
+            <input id="loginFormSubmit" type="submit" value="Login" />
+        </form>
+
+        <footer>
+            <a href="q2b_dummy.html" tabindex="1">Copyright</a> |
+            <a href="q2b_dummy.html" tabindex="2">Privacy</a> |
+            <a href="q2b_dummy.html" tabindex="3">FAQs</a> |
+            <a href="q2b_dummy.html" tabindex="5">Conditions of use</a>
+        </footer>
+
+    </main>
+
+    <script src="/js/login.js"></script>
+
+</body>
 
 </html>
