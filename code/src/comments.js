@@ -18,8 +18,7 @@ module.exports = {
     insertComment(body, post_id, user_id, callback) {
         Database.connect().then(db =>  {
             // XSS code
-            // title = htmlEscaper.escape(title)
-            // body = htmlEscaper.escape(body)
+             body = htmlEscaper.escape(body)
             db.run('INSERT INTO comments("body", "post_id", "user_id") VALUES(?, ?, ?)', body, post_id, user_id).then(result => {
                 callback()
             })
