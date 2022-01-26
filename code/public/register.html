@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,40 +8,42 @@
     <link rel="stylesheet" href="/css/register.css">
 </head>
 
-    <body>
-        <main id = "mainBody">
-            <header>
-                <div id="logo">
-                    <img src="images/LifeinvaderLogo.png" alt="The logo" style="width:150px; height:70px;">
-                </div>
+<body>
+    <main id="mainBody">
+        <header>
+            <div id="logo">
+                <img src="images/LifeinvaderLogo.png" alt="The logo" style="width:150px; height:70px;">
+            </div>
             <nav aria-label="Main menu"></nav>
-                <ul>
-                    <li>
+            <ul>
+                <li>
                     <a href="/index.html">Home</a>
-                    </li>
-                    <li>
+                </li>
+                <li>
                     <a href="/new-posts.html">Posts</a>
-                    </li>
-                    <li>
+                </li>
+                <li>
                     <a href="/login.html">Login</a>
-                    </li>
-                </ul>
-            </header>
-            <h1>Register</h1>
-        
-                <form id="registerForm" name="registerForm" onsubmit="return checkRegistration()" method="post">
-                    <input id="usernameInput" type="text" name="usernameInput" class="registerFormField" placeholder="Enter username" required>
-                    <input id="passwordInput" name="passwordInput" class="registerFormField" placeholder="Enter password" required>
-                    <!-- <input id="passwordInputRepeat" name="passwordInputRepeat" class="registerFormField" placeholder="Confirm password" required> -->
-                    <input id="registerFormSubmit" type="submit"  value="Register"/>
-                </form>
+                </li>
+            </ul>
+        </header>
+        <h1>Register</h1>
+
+        <form id="registerForm" name="registerForm">
+            <input id="usernameInput" type="text" name="username" class="registerFormField" placeholder="Enter username"
+                required>
+            <input id="passwordInput" name="password" class="registerFormField" placeholder="Enter password" required>
+            <!-- <input id="passwordInputRepeat" name="passwordInputRepeat" class="registerFormField" placeholder="Confirm password" required> -->
+            <input id="registerFormSubmit" type="submit" value="Register" />
+        </form>
 
 
 
-        </main>
+    </main>
 
-        <script src= "/js/register.js"></script>
-        
-    </body>
+    <script src="/js/utils.js"></script>
+    <script src="/js/register.js"></script>
+
+</body>
 
 </html>
