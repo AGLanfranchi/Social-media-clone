@@ -5,7 +5,7 @@ const UUID = require('uuid')
 
 module.exports = {
 
-    
+
     login(username, password, callback) {
         Database.connect().then(db => {
             db.get('SELECT * FROM users WHERE username = ? AND password = ?', username, password).then(result => {
@@ -20,9 +20,9 @@ module.exports = {
                     callback(result)
                 }
             })
-            .catch(err => {
-                console.log('users.login failed with error:' + err)
-            })
+                .catch(err => {
+                    console.log('users.login failed with error:' + err)
+                })
         })
     },
 
@@ -31,9 +31,10 @@ module.exports = {
             db.run('INSERT INTO users (username, password) VALUES (?,?)', username, password).then(result => {
                 callback(true)
             })
-            .catch(err => {
-                callback(false)
-             })
+                .catch(err => {
+                    callback(false)
+                    console.log(err)
+                })
         })
     },
 
@@ -42,10 +43,10 @@ module.exports = {
             db.get('SELECT * FROM users WHERE token = ?', token).then(result => {
                 callback(result)
             })
-            .catch(err => {
-                console.log('users.findByToken failed with error:' + err)
-                callback(false)
-            })
+                .catch(err => {
+                    console.log('users.findByToken failed with error:' + err)
+                    callback(false)
+                })
         })
     }
 
