@@ -2,7 +2,7 @@
 
 let formInput = document.getElementById('registerForm');
 
-form.addEventListener('submit', function(event) {
+formInput.addEventListener('submit', function (event) {
   event.preventDefault();
   let data = new FormData(formInput);
 
@@ -11,21 +11,23 @@ form.addEventListener('submit', function(event) {
 
   fetch('/api/register', {
     headers: {
-      "Content-Type" : "application/json"
+      "Content-Type": "application/json"
     },
 
     method: "POST",
     body: utils.formDataToJSON(data)
   })
-// Deal wth response
+    // Deal wth response
 
-.then(function(result){
-  result.json().then(result => {
-    console.log(result);
+    .then(function (result) {
+      result.json().then(result => {
+        console.log(result);
 
-    if(result){
-      //TODO
-      }
+        if (result) {
+          window.location = 'http://localhost:3000/login.html'
+        } else {
+          alert("Error registering account. Username could already be taken.")
+        }
+      })
     })
-  })
 })
