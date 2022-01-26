@@ -25,7 +25,6 @@ html {
     
     #mainBody {
       width: 50%;
-      height: 70%;
       display: grid;
       justify-items: center;
       align-items: center;
