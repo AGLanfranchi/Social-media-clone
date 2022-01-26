@@ -142,6 +142,7 @@ app.get('/api/posts', (req, res) => {
 
 
 app.post('/api/register', function (req, res) {
+  console.log(req.body)
   Users.register(req.body.username, req.body.password, function(result) {
     res.json(result)
   })
