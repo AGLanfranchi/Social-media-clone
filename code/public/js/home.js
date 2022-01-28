@@ -3,8 +3,8 @@ function callApi(data) {
     let options ={
         method: "POST",
               headers: {
-                "X-API-Token": window.sessionStorage.getItem('token')
-        //         "Content-Type" : "application/json"
+                "X-API-Token": window.sessionStorage.getItem('token'),
+                "Content-Type" : "application/json"
          },
                 body: JSON.stringify(data)
             }
