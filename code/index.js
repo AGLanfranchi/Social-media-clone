@@ -121,7 +121,7 @@ app.post('/api/comment', function (req, res) {
   console.log(req.body)
   let apiToken = req.get('X-API-Token');
   Users.findByToken(apiToken, user => {
-        Comments.insertComment(req.body.body, post_id, user_id, result =>{
+        Comments.insertComment(req.body.body, req.body.post_id, user_id, result =>{
           console.log(result)
           res.status(200).json(result);
         })
