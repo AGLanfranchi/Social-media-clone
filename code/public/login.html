@@ -29,7 +29,7 @@
 <body>
     <main id="mainBody">
 
-        <h1>Login</h1>
+        <h1>SIGN IN</h1>
 
         <div id="loginErrorMessage" class="hidden">
             <p id="errorMessage">Invalid username <span id="messageSecondLine"> and/or password.</span></p>
@@ -37,12 +37,12 @@
 
 
         <form id="loginForm" name="loginForm">
-            <input id="usernameInput" type="text" name="username" class="loginFormField" placeholder="Username"
-                required>
-            <input id="passwordInput" type="password" name="password" class="loginFormField" placeholder="Password"
-                required>
-            <input id="showPassordButton" type="button" value="Show password" onclick="Toggle()">
-            <input id="loginFormSubmit" type="submit" value="Login" />
+            <label for="usernameInput" class="usernameInput"> Lifeinvader username</label>
+            <input id="usernameInput" type="text" name="username" class="loginFormField" required>
+            <label for="passwordInput" class="passwordInput"> Password</label>
+            <input id="passwordInput" type="password" name="password" class="loginFormField" required>
+            <input class="showPassordButton" type="button" value="Show password" onclick="Toggle()">
+            <input class="loginFormSubmit" type="submit" value="Login" />
         </form>
 
         <footer>

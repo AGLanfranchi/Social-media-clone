@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="/css/register.css">   
+    <link rel="stylesheet" href="/css/register.css">
 </head>
 
 <header>
@@ -28,12 +28,13 @@
 
 <body>
     <main id="mainBody">
-        <h1>Register</h1>
+        <h1>REGISTER</h1>
 
         <form id="registerForm" name="registerForm">
-            <input id="usernameInput" type="text" name="username" class="registerFormField" placeholder="Enter username"
-                required>
-            <input id="passwordInput" name="password" class="registerFormField" placeholder="Enter password" required>
+            <label for="usernameInput" class="usernameInput"> Enter username</label>
+            <input id="usernameInput" type="text" name="username" class="registerFormField" required>
+            <label for="usernameInput" class="usernameInput"> Enter password</label>
+            <input id="passwordInput" name="password" class="registerFormField" required>
             <!-- <input id="passwordInputRepeat" name="passwordInputRepeat" class="registerFormField" placeholder="Confirm password" required> -->
             <input id="registerFormSubmit" type="submit" value="Register" />
         </form>
