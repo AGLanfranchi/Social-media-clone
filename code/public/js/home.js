@@ -6,8 +6,7 @@ function callApi(data) {
                 "X-API-Token": window.sessionStorage.getItem('token')
         //         "Content-Type" : "application/json"
          },
-                body: data
-                // JSON.stringify(data)
+                body: JSON.stringify(data)
             }
 
     return fetch(url, options).then(response => response.json());
@@ -21,6 +20,8 @@ function showPosts(posts) {
         let clone = template.content.firstElementChild.cloneNode(true)
         clone.getElementsByTagName('h2')[0].textContent = post.title
         clone.getElementsByClassName('body')[0].textContent = post.body
+        clone.querySelector('input[name=post_id]').setAttribute('value', post.id)
+
         if (post.image_id) {
                 clone.getElementsByTagName('img')[0].src = "/uploads/" + post.filepath
             }
@@ -28,6 +29,17 @@ function showPosts(posts) {
         if (post.comment_id) {
             clone.getElementsByClassName('comments')[0].textContent = post.body
         }
+
+        clone.querySelector('form').addEventListener('submit', function (event) {
+            event.preventDefault()
+            let data = new FormData(event.target);
+            let comment = data.get("comment");
+            let post_id = data.get("post_id");
+
+            console.log(event.target, data.get('commentsBox', data.get('post_id')))
+
+            allApi({ "comment": comment, "post_id": post_id }).then(login)
+        })
     
         container.appendChild(clone)
         })
