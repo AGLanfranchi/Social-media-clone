@@ -63,11 +63,12 @@ html {
       margin-bottom: 25px;
       margin-top: 25px;
       padding: 12px 8px 20px 60px;
-      border: 2px solid #26384f;
+      border: 4px solid #26384f;
       box-shadow: 0 0 5px #000;
       overflow: hidden;
     }
-    .body{
+
+    .body {
       margin-bottom: 25px;
       margin-top: 25px;
     }
