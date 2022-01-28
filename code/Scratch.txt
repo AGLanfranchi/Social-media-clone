@@ -65,3 +65,20 @@ function loadPosts() {
 
 
 SELECT  	posts.id, 	posts.title, 	posts.body, 	posts.user_id, 	images.id AS image_id FROM posts LEFT JOIN images ON posts.image_id = images.id ORDER BY posts.id
+
+callApi({ "comment": comment, "post_id": postID }).then(function())
+
+        clone.querySelector('form').addEventListener('submit', function (event) {
+            event.preventDefault()
+            let data = new FormData(event.target);
+
+            console.log(event.target, data.get('commentsBox', data.get('post_id')))
+
+            let comment = data.get("comment");
+            let post_id = data.get("post_id");
+
+            callApi({ "comment": comment, "post_id": post_id }).then(function () {
+
+            })
+
+            container.appendChild(clone)
