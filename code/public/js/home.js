@@ -38,7 +38,9 @@ function showPosts(posts) {
 
             console.log(event.target, data.get('commentsBox', data.get('post_id')))
 
-            allApi({ "comment": comment, "post_id": post_id }).then(login)
+            callApi({ "comment": comment, "post_id": post_id }).then(function(){
+
+            })
         })
     
         container.appendChild(clone)
