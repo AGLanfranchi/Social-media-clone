@@ -1,72 +1,53 @@
-From login.js
 
-//Log the user in by storing their token
-                                // Hides or removes the HTML error message depedning on login 
+From posts.js
 
-                                // let loginErrorMsg = document.getElementById("loginErrorMessage")
-
-                                // if (user && user.token) {
-                                //     window.sessionStorage.setItem('token', user.token) // Save the user's API token
-                                //     window.sessionStorage.setItem('username', user.username)
-                                //     loginErrorMsg.classList.add('hidden')
-                                //     window.location = 'http://localhost:3000/index.html'
-                                // } else {
-                                //     loginErrorMsg.classList.remove('hidden')
-                                // }
-                           
-
-                            // Hides or removes the HTML error message depedning on login 
-
-                            // let loginErrorMsg = document.getElementById("loginErrorMessage")
-
-                            //  if(!user) {
-                            //     loginErrorMsg.classList.remove('hidden')
-                            //  } else {
-                            //     loginErrorMsg.classList.add('hidden')
-                            //     window.location = 'http://localhost:3000/index.html'
-                            //  }
+getPosts(offset, limit, callback) {
+        Database.connect().then(db => {
+            db.all('SELECT posts.id, posts.title, posts.body, posts.user_id, images.id AS image_id, images.filepath FROM posts LEFT JOIN images ON posts.image_id = images.id ORDER BY posts.id DESC LIMIT ? OFFSET ?', limit, offset).then(result => {
+                callback(result)
+            })
+                .catch(err => {
+                    console.log('Get posts failed with error:' + err)
+                })
+        })
+    }
 
 
-                            function showPost(post) {
+
+From index.js
+
+app.post('/api/comment', function (req, res) {
+  //Get the API token from the header provided by the front-end fetch request
+  console.log(req.body)
+  let apiToken = req.get('X-API-Token');
+  Users.findByToken(apiToken, user => {
+        Comments.insertComment(req.body.body, req.body.post_id, user_id, result =>{
+          console.log(result)
+          res.status(200).json(result);
+        })
+    })     
+})
+   
+   From home.js
+
+
+   function showPosts(posts) {
     let template = document.getElementById("post-template")
     let container = document.getElementById("posts-container")
 
-    post.forEach(posts => {      
-    let clone = template.content.firstElementChild.cloneNode(true)
-    clone.getElementsByTagName('h2')[0].textContent = post.title
-    clone.getElementsByClassName('body')[0].textContent = post.body
-    if (posts.image_id) {
-            clone.getElementsByTagName('img')[0].src = "/uploads/" + posts.filepath
+    posts.forEach(post => {
+        let clone = template.content.firstElementChild.cloneNode(true)
+        clone.getElementsByTagName('h2')[0].textContent = post.title
+        clone.getElementsByClassName('body')[0].textContent = post.body
+        clone.querySelector('input[name=post_id]').setAttribute('value', post.id)
+
+        if (post.image_id) {
+            clone.getElementsByTagName('img')[0].src = "/uploads/" + post.filepath
         }
 
-    container.appendChild(clone)
-    })
-}
-
-let itemsPerPage = 3
-let currentPage = 0
-
-function loadPosts() {
-    let offset = itemsPerPage * currentPage
-
-    fetch('/api/posts?offset=' + offset + '&limit=' + limit, {
-        }).then(function(result) {
-        //Display the posts in the page
-       
-        result.json().then(result => {
-            console.log(result)
-            showPost(result)
-        })
-    })
-
-    offset += 5
-}
-
-
-
-SELECT  	posts.id, 	posts.title, 	posts.body, 	posts.user_id, 	images.id AS image_id FROM posts LEFT JOIN images ON posts.image_id = images.id ORDER BY posts.id
-
-callApi({ "comment": comment, "post_id": postID }).then(function())
+        if (post.comment_id) {
+            clone.getElementsByClassName('comments')[0].textContent = post.body
+        }
 
         clone.querySelector('form').addEventListener('submit', function (event) {
             event.preventDefault()
@@ -82,3 +63,25 @@ callApi({ "comment": comment, "post_id": postID }).then(function())
             })
 
             container.appendChild(clone)
+
+        })
+    })
+}
+
+From index.html
+
+<template id="post-template">
+            <div class="posts">
+                <h2></h2>
+                <img>
+                <div class="body"></div>
+                <div class="comments"></div>
+                <!-- Post comments -->
+                <form name="commentsForm">
+                    <input id="commentsBox" type="text" name="commentsBox" class="commentsPostField"
+                        placeholder="Enter comment here" required>
+                    <input type="hidden" name="post_id" value="">
+                    <input id="commentsSubmit" type="submit" value="Post"/>
+                </form>
+            </div>
+        </template>
