@@ -14,15 +14,29 @@ html {
     }
     
     .registerFormField {
-      border: none;
-      border-bottom: 1px solid #3a3a3a;
-      margin-bottom: 10px;
+      max-width: 300px;
+      background: #32353C;
       border-radius: 3px;
+      color: #E9E9E9;
+      padding: 8px 6px;
+      display: block;
+      box-shadow: none;
+      width: 100%;
+      transition: border ease-in-out .5s;
+      border: 1px solid #26282D;
       outline: none;
-      padding: 0px 0px 5px 5px;
-      margin-top: 10px;
+      margin-bottom: 20px;
     }
   
+    .usernameInput{
+      margin-bottom: 10px;
+    }
+    
+    .passwordInput{
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
     #showPassordButton:active{
       background-color: #276c88;
       box-shadow: 0 5px #666;

@@ -36,24 +36,35 @@ html {
   }
 
   .postsTitleField {
-    border: none;
-    border-bottom: 1px solid #3a3a3a;
-    margin-bottom: 10px;
+    max-width: 300px;
+    background: #32353C;
     border-radius: 3px;
+    color: #E9E9E9;
+    padding: 8px 6px;
+    display: block;
+    box-shadow: none;
+    width: 100%;
+    transition: border ease-in-out .5s;
+    border: 1px solid #26282D;
     outline: none;
-    padding: 0px 0px 5px 5px;
-    width: 200px;
+    margin-bottom: 10px;
   }
 
   .postsBodyField {
-    border: none;
-    border-bottom: 1px solid #3a3a3a;
-    margin-bottom: 10px;
+    max-width: 300px;
+    background: #32353C;
     border-radius: 3px;
-    outline: none;
-    padding: 0px 0px 5px 5px;
-    width: 200px;
+    color: #E9E9E9;
+    padding: 8px 6px;
+    display: block;
+    box-shadow: none;
+    width: 100%;
+    max-width: 300px;
     height: 50px;
+    transition: border ease-in-out .5s;
+    border: 1px solid #26282D;
+    margin-top: 10px;
+    margin-bottom: 20px;
   }
 
   #postsFormSubmit {

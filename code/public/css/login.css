@@ -40,23 +40,37 @@ html {
   .loginFormField::placeholder {
     color: #3a3a3a;
   }
-  
+
   .loginFormField {
-    border: none;
-    border-bottom: 1px solid #3a3a3a;
-    margin-bottom: 10px;
+    max-width: 300px;
+    background: #32353C;
     border-radius: 3px;
+    color: #E9E9E9;
+    padding: 8px 6px;
+    display: block;
+    box-shadow: none;
+    width: 100%;
+    transition: border ease-in-out .5s;
+    border: 1px solid #26282D;
     outline: none;
-    padding: 0px 0px 5px 5px;
-    margin-top: 10px;
   }
 
-  #showPassordButton{
+  .usernameInput{
+    margin-bottom: 10px;
+  }
+  
+  .passwordInput{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .showPassordButton{
     font-size: 1rem;
     padding: 0.5rem;
     border: none;
     width: 10rem;
     text-align: center;
+    justify-items: right;
     margin-bottom: 1rem;
     margin-top: 1rem; 
     color: rgb(255, 255, 255);
@@ -64,7 +78,7 @@ html {
     border-radius: 5px;
   }
 
-  #showPassordButton:hover{
+  .showPassordButton:hover{
     cursor: pointer;
     box-shadow: 0 0.4rem 1.4rem 0 rgba(83, 191, 231, 0.6);
     transition: transform 150ms;
@@ -72,7 +86,7 @@ html {
   }
 
 
-  #loginFormSubmit {
+  .loginFormSubmit {
     font-size: 1rem;
     padding: 0.5rem;
     border: none;
@@ -85,7 +99,7 @@ html {
     border-radius: 5px;
   }
 
-  #loginFormSubmit:hover{
+  .loginFormSubmit:hover{
     cursor: pointer;
     box-shadow: 0 0.4rem 1.4rem 0 rgba(83, 191, 231, 0.6);
     transition: transform 150ms;

@@ -53,15 +53,16 @@ html {
    
 
     #posts-container {
-      text-align: center;     
+      text-align: center; 
+      width: 80%;  
     }
 
     .posts {
       text-align: left; 
       background-color: rgba( 32, 47, 67, 0.8);
       color: #acb2b8;
-      margin-bottom: 25px;
-      margin-top: 25px;
+      margin-bottom: 20px;
+      margin-top: 20px;
       padding: 12px 8px 20px 60px;
       border: 4px solid #26384f;
       box-shadow: 0 0 5px #000;
@@ -69,12 +70,13 @@ html {
     }
 
     .body {
-      margin-bottom: 25px;
-      margin-top: 25px;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      outline-color:black
     }
 
     img {
-      width: 50%
+      width: 60%
     }
 
     h2 {
