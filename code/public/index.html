@@ -8,23 +8,23 @@
     <link rel="stylesheet" href="/css/index.css">
 </head>
 
-        <header>
-            <div id="logo">
-                <img src="images/LifeinvaderLogo.png" alt="The logo" style="width:150px; height:70px;">
-            </div>
-            <nav aria-label="Main menu"></nav>
-            <ul>
-                <li>
-                    <a href="/login.html">Login</a>
-                </li>
-                <li>
-                    <a href="/new-posts.html">Posts</a>
-                </li>
-                <li>
-                    <a href="/register.html">Register</a>
-                </li>
-            </ul>
-        </header>
+<header>
+    <div id="logo">
+        <img src="images/LifeinvaderLogo.png" alt="The logo" style="width:150px; height:70px;">
+    </div>
+    <nav aria-label="Main menu"></nav>
+    <ul>
+        <li>
+            <a href="/login.html">Login</a>
+        </li>
+        <li>
+            <a href="/new-posts.html">Posts</a>
+        </li>
+        <li>
+            <a href="/register.html">Register</a>
+        </li>
+    </ul>
+</header>
 
 <body>
     <main id="mainBody">
@@ -44,10 +44,11 @@
                 <div class="body"></div>
                 <div class="comments"></div>
                 <!-- Post comments -->
-                <form id="commentsForm" name="commentsForm" action="" method="post">
+                <form name="commentsForm">
                     <input id="commentsBox" type="text" name="commentsBox" class="commentsPostField"
                         placeholder="Enter comment here" required>
-                    <input id="commentsSubmit" type="submit" value="Post" />
+                    <input type="hidden" name="post_id" value="">
+                    <input id="commentsSubmit" type="submit" value="Post"/>
                 </form>
             </div>
         </template>
@@ -57,15 +58,14 @@
 
     </main>
 
-        <footer>
-            <a href="q2b_dummy.html" tabindex="1">Copyright</a> |
-            <a href="q2b_dummy.html" tabindex="2">Privacy</a> |
-            <a href="q2b_dummy.html" tabindex="3">FAQs</a> |
-            <a href="q2b_dummy.html" tabindex="5">Conditions of use</a>
-        </footer>
+    <footer>
+        <a href="q2b_dummy.html" tabindex="1">Copyright</a> |
+        <a href="q2b_dummy.html" tabindex="2">Privacy</a> |
+        <a href="q2b_dummy.html" tabindex="3">FAQs</a> |
+        <a href="q2b_dummy.html" tabindex="5">Conditions of use</a>
+    </footer>
 
     <script src="/js/home.js"></script>
-    <script src="/js/comments.js"></script>
 
 </body>
 
