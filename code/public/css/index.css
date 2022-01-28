@@ -33,11 +33,11 @@ html {
     #loadMoreButton {
       font-size: 1rem;
       padding: 0.5rem;
+      border: none;
       width: 10rem;
       text-align: center;
       margin-bottom: 1rem;
-      margin-top: 1rem;
-      text-decoration: none;
+      margin-top: 1rem; 
       color: rgb(255, 255, 255);
       background: linear-gradient(90deg, rgb(8, 187, 254, 255)0%, rgb(43, 121, 255, 255)100%);
       border-radius: 5px;
@@ -50,14 +50,36 @@ html {
       transform: scale(1.03);
     }
 
-    img {
-      width: 50%
-    }
+   
 
     #posts-container {
       text-align: center;     
     }
-    
+
+    .posts {
+      text-align: left; 
+      background-color: rgba( 32, 47, 67, 0.8);
+      color: #acb2b8;
+      margin-bottom: 25px;
+      margin-top: 25px;
+      padding: 12px 8px 20px 60px;
+      border: 2px solid #26384f;
+      box-shadow: 0 0 5px #000;
+      overflow: hidden;
+    }
+    .body{
+      margin-bottom: 25px;
+      margin-top: 25px;
+    }
+
+    img {
+      width: 50%
+    }
+
+    h2 {
+    text-align: center; 
+    }
+
     footer {
       position:relative;
       bottom:0;
