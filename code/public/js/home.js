@@ -33,7 +33,7 @@ function showPosts(posts) {
         clone.querySelector('form').addEventListener('submit', function (event) {
             event.preventDefault()
             let data = new FormData(event.target);
-            let comment = data.get("comment");
+            let comment = data.get("commentsBox");
             let post_id = data.get("post_id");
 
             console.log(event.target, data.get('commentsBox', data.get('post_id')))
