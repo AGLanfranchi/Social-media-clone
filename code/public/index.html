@@ -9,21 +9,18 @@
 </head>
 
 <header>
-    <div id="logo">
-        <img src="images/LifeinvaderLogo.png" alt="The logo" style="width:150px; height:70px;">
+    <div class="container-nav">
+        <div id="logo">
+            <img src="images/LifeinvaderLogo.png" alt="The logo" style="width:150px; height:70px;">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/login.html">Login</a></li>
+                <li><a href="/new-posts.html">Posts</a></li>
+                <li><a href="/register.html">Register</a></li>
+            </ul>
+        </nav>
     </div>
-    <nav aria-label="Main menu"></nav>
-    <ul>
-        <li>
-            <a href="/login.html">Login</a>
-        </li>
-        <li>
-            <a href="/new-posts.html">Posts</a>
-        </li>
-        <li>
-            <a href="/register.html">Register</a>
-        </li>
-    </ul>
 </header>
 
 <body>
@@ -40,15 +37,15 @@
         <template id="post-template">
             <div class="posts">
                 <h2></h2>
-                <img>
                 <div class="body"></div>
+                <img>
                 <div class="comments"></div>
                 <!-- Post comments -->
                 <form name="commentsForm">
                     <input id="commentsBox" type="text" name="commentsBox" class="commentsPostField"
                         placeholder="Enter comment here" required>
                     <input type="hidden" name="post_id" value="">
-                    <input id="commentsSubmit" type="submit" value="Post"/>
+                    <input id="commentsSubmit" type="submit" value="Post" />
                 </form>
             </div>
         </template>
