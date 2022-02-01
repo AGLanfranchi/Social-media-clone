@@ -60,7 +60,7 @@ function showPosts(posts) {
   }
     let likeElem = clone.getElementsByClassName('likes')[0]
     updatePostLikeCount(post.id, likeElem)
-    
+
     container.appendChild(clone);
   });
 }
@@ -68,7 +68,7 @@ function showPosts(posts) {
 function updatePostLikeCount(post_id, elem){
   fetch("/api/postlikecount?post_id=" + post_id).then((result) => {
     result.json().then(data=>{
-      return elem.innerText =  data[0].likes
+      return elem.innerText = "Likes:" + data[0].likes
     })
   })
 }
