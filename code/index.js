@@ -121,13 +121,30 @@ app.post('/api/comment', function (req, res) {
   console.log(req.body)
   let apiToken = req.get('X-API-Token');
   Users.findByToken(apiToken, user => {
-        Comments.insertComment(req.body.comment, req.body.post_id, req.body.user_id, result =>{
-          console.log(result)
+        Comments.insertComment(req.body.comment, req.body.post_id, user.id, (result) =>{
+          console.log("Post comment api:", result)
           res.status(200).json(result);
         })
     })     
 })
-        
+   
+
+app.get('/api/comments', (req, res) => {
+  let limit = 3
+  let offset = req.query.offset
+
+  console.log(offset)
+  
+  Comments.getComments(req.query.post_id,(result) => {
+    res.json(result) 
+  })
+})
+
+app.get('/api/comment', (req, res) => {
+  Comments.getComment(req.query.comment_id,(result) => {
+    res.json(result) 
+  })
+})
 
 app.get('/api/posts', (req, res) => {
   let limit = 3
