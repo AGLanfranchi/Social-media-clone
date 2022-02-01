@@ -20,6 +20,8 @@ function login(user) {
     }
 }
 
+
+
 // Use fetch to call the API
 
 // function callApi(url, data) look at moving this later to another file

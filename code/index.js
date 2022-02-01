@@ -49,28 +49,61 @@ app.post('/api/login', function (req, res) {
 
     res.json(result)
   })
-})
+}),
 
-app.post('/api/post', upload.single('image'), function (req, res) {
-  //Get the API token from the header provided by the front-end fetch request
+app.post('/api/logout', function (req, res) {
   let apiToken = req.get('X-API-Token');
+  Users.findByToken(apiToken, user => {
+    Users.logout(user.id, result => {
+      if (!result) {
+        result = false
+      }
+      res.json(result)
+    })
+  })
+}),
 
-  if (apiToken) {
-    // Find user by token
-    console.log(apiToken)
-    Users.findByToken(apiToken, user => {
-      console.log(user)
-      if (user) {
-        console.log(req.file)
+  app.post('/api/post', upload.single('image'), function (req, res) {
+    //Get the API token from the header provided by the front-end fetch request
+    let apiToken = req.get('X-API-Token');
 
-        if (req.file) {
-          let filepath = req.file.filename
+    if (apiToken) {
+      // Find user by token
+      console.log(apiToken)
+      Users.findByToken(apiToken, user => {
+        console.log(user)
+        if (user) {
+          console.log(req.file)
+
+          if (req.file) {
+            let filepath = req.file.filename
 
 
-          // function needs to go here for images....
-          Posts.imageUpload(filepath, postImage => {
+            // function needs to go here for images....
+            Posts.imageUpload(filepath, postImage => {
 
-            Posts.insertPost(req.body.title, req.body.body, user.id, postImage.lastID, result => {
+              Posts.insertPost(req.body.title, req.body.body, user.id, postImage.lastID, result => {
+
+                // console.log(req.body);
+
+                if (!result) {
+                  result = false
+                }
+
+                res.json(result)
+
+              })
+
+              if (!result) {
+                result = false
+              }
+
+              res.json(result)
+
+            })
+          } else {
+
+            Posts.insertPost(req.body.title, req.body.body, user.id, null, result => {
 
               // console.log(req.body);
 
@@ -81,126 +114,105 @@ app.post('/api/post', upload.single('image'), function (req, res) {
               res.json(result)
 
             })
-
-            if (!result) {
-              result = false
-            }
-
-            res.json(result)
-
-          })
+          }
         } else {
-
-          Posts.insertPost(req.body.title, req.body.body, user.id, null, result => {
-
-            // console.log(req.body);
-
-            if (!result) {
-              result = false
-            }
-
-            res.json(result)
-
-          })
+          // Invalid API token
+          notAllowed(res)
+          console.log("Invalid API token")
         }
-      } else {
-        // Invalid API token
-        notAllowed(res)
-        console.log("Invalid API token")
-      }
-    })
-  } else {
-    // Missing API token
-    notAllowed(res)
-    console.log("Missing API token")
-  }
-})
+      })
+    } else {
+      // Missing API token
+      notAllowed(res)
+      console.log("Missing API token")
+    }
+  })
 
-app.post('/api/comment', function (req, res) {
-  //Get the API token from the header provided by the front-end fetch request
-  console.log(req.body)
-  let apiToken = req.get('X-API-Token');
-  Users.findByToken(apiToken, user => {
-    Comments.insertComment(req.body.comment, req.body.post_id, user.id, (result) => {
-      console.log("Post comment api:", result)
-      res.status(200).json(result);
+  app.post('/api/comment', function (req, res) {
+    //Get the API token from the header provided by the front-end fetch request
+    console.log(req.body)
+    let apiToken = req.get('X-API-Token');
+    Users.findByToken(apiToken, user => {
+      Comments.insertComment(req.body.comment, req.body.post_id, user.id, (result) => {
+        console.log("Post comment api:", result)
+        res.status(200).json(result);
+      })
     })
   })
-})
 
 
-app.get('/api/comments', (req, res) => {
-  let limit = 3
-  let offset = req.query.offset
+  app.get('/api/comments', (req, res) => {
+    let limit = 3
+    let offset = req.query.offset
 
-  console.log(offset)
+    console.log(offset)
 
-  Comments.getComments(req.query.post_id, (result) => {
-    res.json(result)
+    Comments.getComments(req.query.post_id, (result) => {
+      res.json(result)
+    })
   })
-})
 
-app.get('/api/comment', (req, res) => {
-  Comments.getComment(req.query.comment_id, (result) => {
-    res.json(result)
+  app.get('/api/comment', (req, res) => {
+    Comments.getComment(req.query.comment_id, (result) => {
+      res.json(result)
+    })
   })
-})
 
-app.get('/api/posts', (req, res) => {
-  let limit = 3
-  let offset = req.query.offset
+  app.get('/api/posts', (req, res) => {
+    let limit = 3
+    let offset = req.query.offset
 
-  console.log(offset)
+    console.log(offset)
 
-  Posts.getPosts(offset, limit, (result) => {
-    res.json(result)
+    Posts.getPosts(offset, limit, (result) => {
+      res.json(result)
+    })
   })
-})
 
 
-app.post('/api/register', function (req, res) {
-  console.log(req.body)
-  Users.register(req.body.username, req.body.password, function (result) {
-    res.json(result)
+  app.post('/api/register', function (req, res) {
+    console.log(req.body)
+    Users.register(req.body.username, req.body.password, function (result) {
+      res.json(result)
+    })
   })
-})
 
-app.delete('/api/post', (req, res) => {
-  let apiToken = req.get('X-API-Token');
-  Users.findByToken(apiToken, user => {
-    let post_id = req.query.post_id
-    Posts.canUserDeletePost(post_id, user.id, (canDelete) => {
-      if (canDelete) {
-        Comments.deleteComments(post_id, () =>
-          Posts.deletePost(post_id, (result) => {
-            console.log("Deleted POST:", result)
+  app.delete('/api/post', (req, res) => {
+    let apiToken = req.get('X-API-Token');
+    Users.findByToken(apiToken, user => {
+      let post_id = req.query.post_id
+      Posts.canUserDeletePost(post_id, user.id, (canDelete) => {
+        if (canDelete) {
+          Comments.deleteComments(post_id, () =>
+            Posts.deletePost(post_id, (result) => {
+              console.log("Deleted POST:", result)
+              res.status(200).json(result);
+            })
+          )
+        } else {
+          res.status(403)
+        }
+      })
+    })
+  })
+
+  app.delete('/api/comment', (req, res) => {
+    let apiToken = req.get('X-API-Token');
+    Users.findByToken(apiToken, user => {
+      let comment_id = req.query.comment_id
+      Comments.canUserDeleteComment(comment_id, user.id, (canDelete) => {
+        if (canDelete) {
+          Comments.deleteComment(comment_id, (result) => {
+            console.log("Deleted COMMENT:", result)
             res.status(200).json(result);
           })
-        )
-      } else {
-        res.status(403)
-      }
+        } else {
+          res.status(403)
+        }
+      })
     })
   })
-})
 
-app.delete('/api/comment', (req, res) => {
-  let apiToken = req.get('X-API-Token');
-  Users.findByToken(apiToken, user => {
-    let comment_id = req.query.comment_id
-    Comments.canUserDeleteComment(comment_id, user.id, (canDelete) => {
-      if (canDelete) {
-        Comments.deleteComment(comment_id, (result) => {
-          console.log("Deleted COMMENT:", result)
-          res.status(200).json(result);
-        })
-      } else {
-        res.status(403)
-      }
-    })
-  })
-})
-
-// Tell us where we're running from
-console.log("Server running on http://localhost:" + port)
-app.listen(port)
+  // Tell us where we're running from
+  console.log("Server running on http://localhost:" + port)
+  app.listen(port)

@@ -26,6 +26,17 @@ module.exports = {
         })
     },
 
+    logout(user_id, callback) {
+        Database.connect().then(db => {
+            db.run('UPDATE users SET token = NULL WHERE id = ?', user_id).then(result => {
+                callback(result)
+            })
+                .catch(err => {
+                    console.log('users.login failed with error:' + err)
+                })
+        })
+    },
+
     register(username, password, callback) {
         Database.connect().then(db => {
             db.run('INSERT INTO users (username, password) VALUES (?,?)', username, password).then(result => {
