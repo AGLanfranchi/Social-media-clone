@@ -30,6 +30,10 @@ function showPosts(posts) {
 
     loadComments(post.id, commentElement)
 
+    clone.getElementsByClassName("deleteButton")[0].addEventListener("click", (event) => {
+      event.preventDefault();
+      deletePost(post.id)
+    })
 
     clone.querySelector("form").addEventListener("submit", function (event) {
       event.preventDefault();
@@ -46,16 +50,38 @@ function showPosts(posts) {
   });
 }
 
+function deletePost(post_id) {
+  let options = {
+    method: "DELETE",
+    headers: {
+      "X-API-Token": window.sessionStorage.getItem("token")
+    }
+  }
+  fetch("/api/post?post_id=" + post_id, options).then((result) => {
+    location.reload()
+  })
+}
+
+function deleteComment(comment_id) {
+  let options = {
+    method: "DELETE",
+    headers: {
+      "X-API-Token": window.sessionStorage.getItem("token")
+    }
+  }
+  fetch("/api/comment?comment_id=" + comment_id, options).then((result) => {
+    location.reload()
+  })
+}
+
 function loadComment(comment_id, parentElement) {
   fetch("/api/comment?comment_id=" + comment_id).then(
     (response) => {
       //Display the posts in the page
-      response.json().then((result) => { 
-        result.forEach((comment)=>{
-          let d = document.createElement('div')
-          d.innerText = comment.body
-          parentElement.appendChild(d)
-        })
+      response.json().then((result) => {
+        result.forEach((comment) => {
+          createCommentHTML(comment, parentElement)
+        });
       });
     }
   );
@@ -68,15 +94,28 @@ function loadComments(post_id, parentElement) {
     (response) => {
       //Display the posts in the page
 
-      response.json().then((result) => { 
-        result.forEach((comment)=>{
-          let d = document.createElement('div')
-          d.innerText = comment.body
-          parentElement.appendChild(d)
+      response.json().then((result) => {
+        result.forEach((comment) => {
+          createCommentHTML(comment, parentElement)
         })
       });
     }
   );
+}
+
+function createCommentHTML(comment, parentElement) {
+  let d = document.createElement('div')
+  let a = document.createElement('a')
+  a.href = '#'
+  a.innerText = "Delete"
+  a.classList.add('deleteComment')
+  a.addEventListener("click", (event) => {
+    event.preventDefault();
+    deleteComment(comment.id)
+  })
+  d.innerText = comment.body
+  d.appendChild(a)
+  parentElement.appendChild(d)
 }
 
 let itemsPerPage = 3;

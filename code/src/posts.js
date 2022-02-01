@@ -7,8 +7,8 @@ module.exports = {
     insertPost(title, body, user_id, image_id, callback) {
         Database.connect().then(db => {
             // XSS code
-            // title = htmlEscaper.escape(title)
-            // body = htmlEscaper.escape(body)
+            title = htmlEscaper.escape(title)
+            body = htmlEscaper.escape(body)
             db.run('INSERT INTO posts("title", "body", "user_id", "image_id") VALUES(?, ?, ?, ?)', title, body, user_id, image_id).then(result => {
                 callback()
             })
@@ -36,6 +36,28 @@ module.exports = {
             })
                 .catch(err => {
                     console.log('Get posts failed with error:' + err)
+                })
+        })
+    },
+
+    deletePost(post_id, callback) {
+        Database.connect().then(db => {
+            db.all('DELETE FROM posts WHERE id = ?', post_id).then(result => {
+                callback(result)
+            })
+                .catch(err => {
+                    console.log('Delete posts failed with error:' + err)
+                })
+        })
+    },
+
+    canUserDeletePost(post_id, user_id, callback) {
+        Database.connect().then(db => {
+            db.all('SELECT posts.id FROM posts where id = ? AND user_id = ?', post_id, user_id).then(result => {
+                return callback(result.length > 0)
+            })
+                .catch(err => {
+                    console.log(err)
                 })
         })
     }
