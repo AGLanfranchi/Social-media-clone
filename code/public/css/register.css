@@ -25,22 +25,37 @@ html {
       transition: border ease-in-out .5s;
       border: 1px solid #26282D;
       outline: none;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
   
-    .usernameInput{
+    #usernameInput{
       margin-bottom: 10px;
     }
     
-    .passwordInput{
+    #passwordInput{
       margin-top: 10px;
       margin-bottom: 10px;
     }
 
-    #showPassordButton:active{
-      background-color: #276c88;
-      box-shadow: 0 5px #666;
-      transform: translateY(4px);
+    .showPassordButton{
+      font-size: 1rem;
+      padding: 0.5rem;
+      border: none;
+      width: 10rem;
+      text-align: center;
+      justify-items: right;
+      margin-bottom: 1rem;
+      margin-top: 1rem; 
+      color: rgb(255, 255, 255);
+      background: linear-gradient(90deg, rgb(8, 187, 254, 255)0%, rgb(43, 121, 255, 255)100%);
+      border-radius: 5px;
+    }
+  
+    .showPassordButton:hover{
+      cursor: pointer;
+      box-shadow: 0 0.4rem 1.4rem 0 rgba(83, 191, 231, 0.6);
+      transition: transform 150ms;
+      transform: scale(1.03);
     }
   
     #registerFormSubmit{
@@ -50,7 +65,7 @@ html {
       width: 10rem;
       text-align: center;
       margin-bottom: 1rem;
-      margin-top: 1rem; 
+      
       color: rgb(255, 255, 255);
       background: linear-gradient(90deg, rgb(8, 187, 254, 255)0%, rgb(43, 121, 255, 255)100%);
       border-radius: 5px;
