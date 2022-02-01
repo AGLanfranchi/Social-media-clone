@@ -109,13 +109,17 @@ html {
     text-align: center;
  }
 
+ footer :hover{
+  background-color: #B3DFFF;
+  color: black;
+}
+
   /* NAVIGATION *****************************************************************/
   
   ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    
   }
   
   li {
@@ -127,4 +131,41 @@ html {
   a {
     color:#66C0F4;
     position: relative;
+  }
+
+  /* Change the color of links on hover */
+  .container-nav a:hover {
+    background-color: #B3DFFF;
+    color: black;
+  }
+
+  @media (max-width: 600px) {
+    #logo {
+      display: none;
+      }
+
+      header {
+        background: #171a21;
+        position: relative;
+        width: 100%;
+        height: 50px;
+        margin: 0px auto;
+        text-align: center;
+        line-height: 4px;
+        
+      }
+
+      .container-nav {
+      float: none;
+      width: 100%;
+      }
+
+      ul {
+        position: relative;
+        top: 15px;
+      }
+
+      #mainBody {
+        width: 70%;
+      }
   }
