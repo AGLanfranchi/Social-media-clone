@@ -35,6 +35,12 @@ function showPosts(posts) {
       deletePost(post.id)
     })
 
+    clone.getElementsByClassName("likeButton")[0].addEventListener("click", (event) => {
+      event.preventDefault();
+      likePost(post.id)
+    })
+
+    if(window.sessionStorage.getItem('token')!==null){
     clone.querySelector("form").addEventListener("submit", function (event) {
       event.preventDefault();
       let data = new FormData(event.target);
@@ -43,11 +49,28 @@ function showPosts(posts) {
       let commentElement = clone.getElementsByClassName("comments")[0]
       callApi({ comment: comment, post_id: post_id }).then((res) => {
         loadComment(res.lastID, commentElement)
-      });
-    });
-
+      })
+    })
+  }else{
+    clone.querySelector('form').remove()
+    let a = document.createElement('a')
+    a.href = '/login.html'
+    a.innerText = 'You must login to comment'
+    clone.querySelector('.comment-form-wrapper').appendChild(a)
+  }
+    let likeElem = clone.getElementsByClassName('likes')[0]
+    updatePostLikeCount(post.id, likeElem)
+    
     container.appendChild(clone);
   });
+}
+
+function updatePostLikeCount(post_id, elem){
+  fetch("/api/postlikecount?post_id=" + post_id).then((result) => {
+    result.json().then(data=>{
+      return elem.innerText =  data[0].likes
+    })
+  })
 }
 
 function deletePost(post_id) {
@@ -138,6 +161,19 @@ function loadPosts() {
 function nextPage() {
   currentPage++;
   loadPosts();
+}
+
+function likePost(post_id){
+  let options = {
+    method: "POST",
+    headers: {
+      "X-API-Token": window.sessionStorage.getItem("token"),
+      "Content-Type": "application/json"
+    }
+  }
+  fetch("/api/like?post_id="+ post_id, options).then((result) => {
+    location.reload()
+  })
 }
 
 loadPosts();

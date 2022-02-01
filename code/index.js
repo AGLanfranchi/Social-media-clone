@@ -140,7 +140,29 @@ app.post('/api/logout', function (req, res) {
     })
   })
 
+  app.post('/api/register', function (req, res) {
+    console.log(req.body)
+    Users.register(req.body.username, req.body.password, function (result) {
+      res.json(result)
+    })
+  })
 
+  app.post('/api/like', function (req, res) {
+    //Get the API token from the header provided by the front-end fetch request
+    let apiToken = req.get('X-API-Token');
+    Users.findByToken(apiToken, user => {
+      Posts.like(req.query.post_id, user.id, (result) => {
+        res.status(200).json(result);
+      })
+    })
+  })
+
+  app.get('/api/postlikecount', function (req, res) {
+      Posts.likeCount(req.query.post_id, (result) => {
+        res.status(200).json(result);
+    })
+  })
+  
   app.get('/api/comments', (req, res) => {
     let limit = 3
     let offset = req.query.offset
@@ -165,14 +187,6 @@ app.post('/api/logout', function (req, res) {
     console.log(offset)
 
     Posts.getPosts(offset, limit, (result) => {
-      res.json(result)
-    })
-  })
-
-
-  app.post('/api/register', function (req, res) {
-    console.log(req.body)
-    Users.register(req.body.username, req.body.password, function (result) {
       res.json(result)
     })
   })

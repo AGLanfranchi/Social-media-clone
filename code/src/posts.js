@@ -60,5 +60,31 @@ module.exports = {
                     console.log(err)
                 })
         })
+    },
+
+    like(post_id, user_id, callback) {
+        Database.connect().then(db => {
+            db.all('SELECT post_id FROM likes where post_id = ? AND user_id = ?', post_id, user_id).then(result => {
+                if(result.length < 1 ){
+                    db.run('INSERT INTO likes("post_id", "user_id") VALUES (?,?)', post_id, user_id).then(result => {
+                        callback(result)
+                    })
+                        .catch(err => {
+                            console.log(err)
+                        })
+                }
+            })
+                .catch(err => {
+                    console.log(err)
+                })
+        })
+    },
+
+    likeCount(post_id, callback){
+        Database.connect().then(db => {
+            db.all('SELECT COUNT(*) as "likes" FROM likes where post_id = ?', post_id).then(result => {
+                callback(result)
+            })
+        })
     }
 }
