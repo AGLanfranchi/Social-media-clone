@@ -136,19 +136,20 @@ html {
     position:absolute;
     bottom:0;
     width: 100%;
-    height: 50px;
+    height: 2.5rem;
     background: #171a21;
     text-align: center;
+    padding-top: 1rem; 
  }
 
- footer :hover{
+footer :hover{
   background-color: #B3DFFF;
   color: black;
 }
 
- header {
+header {
   background: #171a21;
-  position: relative;
+  position: relative; 
   width: 100%;
   height: 104px;
   margin: 0px auto;
@@ -157,9 +158,8 @@ html {
   line-height: 5px;
 }
 
-.logo {
-float: left;
-margin-left: 1rem;
+#logo {
+float: center;
 }
 
 /* NAVIGATION *****************************************************************/
