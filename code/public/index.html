@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home page</title>
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" 
+  integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"crossorigin="anonymous"> 
 </head>
 
 <header>
@@ -35,7 +37,7 @@
 
         <template id="post-template">
             <div class="posts">
-                <a class="deleteButton" href="#">Delete</a>
+                <a class="deleteButton" href="#">Delete post<i class="fas fa-trash-alt"></i></a>
                 <h2></h2>
                 <div class="body"></div>
                 <img>
@@ -48,7 +50,7 @@
                     <input type="hidden" name="post_id" value="">
                     <input id="commentsSubmit" type="submit" value="Post"/>
                 </form>
-                <a class="likeButton" href="#">Like</a>
+                <a class="likeButton" href="#"><i class="fas fa-thumbs-up"></i>Like</a>
                 <div class="likes"></div>
             </div>
             </div>
